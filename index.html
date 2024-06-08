@@ -38,7 +38,6 @@
         }
         .answer.below-buttons {
             position: fixed;
-            top: calc(100% - 4in); /* Moved 1 inch up */
             left: 50%;
             transform: translateX(-50%);
         }
@@ -395,6 +394,7 @@
             if (scriptContainer.style.display === "none") {
                 answer.classList.remove('fixed');
                 answer.classList.add('below-buttons');
+                answer.style.top = document.querySelector('.questions-container').offsetHeight + 20 + 'px';
             } else {
                 answer.classList.remove('below-buttons');
                 answer.classList.add('fixed');
@@ -440,6 +440,7 @@
                 for (var i = 0; i < answers.length; i++) {
                     answers[i].classList.remove('fixed');
                     answers[i].classList.add('below-buttons');
+                    answers[i].style.top = document.querySelector('.questions-container').offsetHeight + 20 + 'px';
                 }
             }
         }
