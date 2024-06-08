@@ -1,4 +1,4 @@
-<html lang="en">
+html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,6 +114,37 @@
             left: calc(50% + 3in);
             transform: translateX(-50%);
             top: 80px;
+        }
+        .call-notes-container {
+            position: absolute;
+            left: calc(50% + 3.5in);
+            top: 50px;
+            width: 3in;
+        }
+        .call-notes-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: silver;
+            font-weight: bold;
+        }
+        .call-notes-container textarea {
+            width: 100%;
+            height: auto;
+            min-height: 3in;
+            resize: vertical;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: silver;
+            border: 1px solid #000;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .call-notes-container button {
+            background-color: skyblue;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -364,6 +395,12 @@
                 <p>We don’t talk about clinical questions</p>
             </div>
         </div>
+        <div class="call-notes-container">
+            <label for="call-notes">Call Notes</label>
+            <textarea id="call-notes"></textarea>
+            <button onclick="copyCallNotes()">Copy</button>
+            <button onclick="clearCallNotes()">Clear</button>
+        </div>
     </div>
     <script>
         function toggleAnswer(id) {
@@ -410,6 +447,16 @@
             } else {
                 scriptContainer.style.display = "none";
             }
+        }
+
+        function copyCallNotes() {
+            var callNotes = document.getElementById("call-notes");
+            callNotes.select();
+            document.execCommand("copy");
+        }
+
+        function clearCallNotes() {
+            document.getElementById("call-notes").value = "";
         }
     </script>
 </body>
