@@ -1,278 +1,262 @@
-<html>
+<html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Rebuttals Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Interactive Rebuttals Form&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="styles.css"&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="Nuvia_logo.png" alt="Nuvia Logo"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Nuvia Script and Rebuttals&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="counter-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="counter"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Answers&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="answers-count"&gt;0&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="incrementCounter('answers-count')"&gt;Up&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="decrementCounter('answers-count')"&gt;Down&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="resetCounter('answers-count')"&gt;Reset&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="counter"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Sets&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="sets-count"&gt;0&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="incrementCounter('sets-count')"&gt;Up&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="decrementCounter('sets-count')"&gt;Down&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="counter-button" onclick="resetCounter('sets-count')"&gt;Reset&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="toggle-button" onclick="toggleScript()"&gt;Toggle Script&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="script-container" id="script-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;Script&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Hi LEAD NAME this is NAME with Nuvia Dental Implant Center. I saw that you filled out one of our forms inquiring about dental implants so I’m calling to get a better understanding of your situation and what you’ve been going through. Can you tell me a little bit more about your situation?&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Clinical Discovery&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Example Questions:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“How many teeth are you missing?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“Where are the missing teeth located are they molars or in the front?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“What about your other teeth what condition are those in?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Pain Points and Value Statements&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay now that I have a good understanding of your situation what is the main reason you are looking into getting your smile fixed?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Lead Responds&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay so you are [PAIN POINT]. How does it affect you on a daily basis?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Chewing/Diet&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I see here on the form that you are struggling with your (diet/ ability to chew.) Can you expand on :&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“How is this affecting your ability to chew?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“Which foods are you having to avoid?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“So how are you chewing then?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Diet Value Statement:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Chewing is the start of our digestive system and when you can’t chew right you aren’t able to eat as healthy or digest properly. In the consultation we’ll give you more information on how our permanent teeth in 24 Hours will get you back to eating the foods you want.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Pain Script&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“But with that said I also see here on the form that you are experiencing some pain. Can you expand on that?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“Is the pain constant or is it mainly when you eat?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“How painful is it on a scale of 1 to 10?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“Does it make it hard for you to sleep?”--- “What other activities does it keep you from doing?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“How does that pain affect you on a day to day basis?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Pain Value Statement:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Pain is an indicator of infection in the mouth. In your consultation they’ll take a 3D x-ray and they’ll be able to see the amount of infection that is present and we can talk to you about treatment options”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Confidence Script&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I see here on the form that you are experiencing a lack of confidence in your smile. Can you expand on that?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;“How is it affecting you socially?”&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Confidence Value Statement:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I don’t know if you’ve seen our videos online but you can see how much people’s confidence changes literally overnight. In the consultation they’ll actually show you a digital mockup of what your smile could look like in 24 hours”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Label Summary&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“So it sounds like you [INSERT WHY]. Is that right?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Dental implants are a permanent solution and can restore the function of your teeth. From what we have discussed I believe our permanent teeth in 24-Hours will be the best solution for you.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Scheduling&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“The first step is to come in for a consultation here in (location). The consultation really serves as a discovery period where we can take CT-Scans get you a treatment plan and answer any questions you might have.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do mornings or Afternoons work better for you?” * get them in within 48 hour&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Awesome we just had ______ or ______ open up. Which works best?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Deposit and Close&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“When we schedule an appointment we reserve the entire office and staffs time for a whole hour so it’s important that you show up for your appointment. For that reason we do ask you to reserve your appointment with an $89 deposit which is refunded back to you when you come in for your appointment. Would you like to do that with a debit or credit card?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Get $89&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I’ll send you an appointment confirmation and receipt. We’re excited to see you!”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Voucher&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Goal: To make sure they understand that to qualify for the 10% discount they can’t reschedule or not show up to their first appointment. Ultimately we want them to show up for their appointment&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“As you can imagine we have had an overwhelming response to this voucher with how many people we have trying to come in we are unable to accommodate reschedules and no shows. For that reason to qualify for that one time 10% discount you must show up to your consultation on {date and time} without rescheduling.”****This is our win marker for Balto so make sure to say this after every set&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Spoucher&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Goal: To make sure that if there is a spouse or significant other involved in the decision making process they show up and will receive a $100.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Oh hey! ……Last thing……. the doctor does ask that if you have a spouse or significant other that they attend the consultation with you so we do offer a $100 gift card for bringing them with you to this appointment. Who should we put in the notes that will be coming with you on __________?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="questions-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer1')"&gt;Deposit Objection - Clarify&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer1" class="answer" onclick="toggleAnswer('answer1')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“So you’re not paying for the consultation. The voucher will cover the cost for you. The $89 is just to hold your spot on the calendar to ensure everyone shows for their appointment and we can do that with a debit or credit card whatever works best for you.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer2')"&gt;Deposit - Scam/Uncomfortable&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer2" class="answer" onclick="toggleAnswer('answer2')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Since we are limited in the amount of people we can see each day when someone schedules an appointment and doesn’t show up it is unfair to everyone else that is seeking treatment. When you come in the first thing we do is refund that deposit to you. Most of our patients use a debit or credit card what works best for you?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer3')"&gt;Deposit - Doesn’t Have $89/ No&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer3" class="answer" onclick="toggleAnswer('answer3')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Oh I gotcha sometimes when I hear that it may be something else holding you back like you’re nervous to come in for an appointment or you’re nervous about giving your credit card over the phone. Is it one of those?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;IF LEAD RESPONDS THEY DON’T HAVE $89 - *RED FLAG PROTOCOL*&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer4')"&gt;Deposit Driving Objection&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer4" class="answer" onclick="toggleAnswer('answer4')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay no worries I'm just taking some notes for the Dr so I’ll wait until you find a safe spot to pull over.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer5')"&gt;Deposit- Away from Card Objection&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer5" class="answer" onclick="toggleAnswer('answer5')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay no worries I’m just putting in some notes so you can run and grab that take your time.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer6')"&gt;Call Back - Beginning of the call/Busy (Pre Discovery)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer6" class="answer" onclick="toggleAnswer('answer6')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I can call you back but I'm not sure we can even help you. Tell me real quick how many teeth are you missing?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;REDIRECT BACK TO FLOW WITH A QUESTION&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer7')"&gt;Call back - Middle of the call (Mid - Discovery)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer7" class="answer" onclick="toggleAnswer('answer7')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Yeah it will only take a couple more minutes in fact I think you would be a great candidate”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;REDIRECT BACK TO FLOW WITH A QUESTION&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer8')"&gt;Scheduling- Coordinating a Ride&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer8" class="answer" onclick="toggleAnswer('answer8')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“How do you normally arrange to go to your doctor appointments?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;LEAD RESPONDS&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay I just want to make sure I can get that voucher reserved for you today so let’s go ahead and find a time that will work with your schedule and that way it will give you plenty of time to arrange that ride.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;STILL WON’T SCHEDULE&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay I know this is really important to you and we only have a couple of those vouchers left so let’s get you scheduled and then we can move as needed when you get with your ride. So looking back at my calendar would you like to do morning or afternoon?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer9')"&gt;Scheduling- Needs to Check with Work&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer9" class="answer" onclick="toggleAnswer('answer9')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“What does your work schedule look like this week?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;LEAD RESPONDS&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“To accommodate our busier patients we do have availability during lunch time early in the morning or later in the afternoon. What would work best?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer10')"&gt;Schedule- Needs to Check Calendar&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer10" class="answer" onclick="toggleAnswer('answer10')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay go ahead and pull that up I’m pulling up mine right now as well.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer11')"&gt;Schedule- Needs to Talk to Spouse&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer11" class="answer" onclick="toggleAnswer('answer11')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Okay let’s go ahead and find a time that works best for YOU right now. Do mornings or afternoons work best for you?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Lead Responds with Time&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“So let’s schedule the appointment for that time and because we understand how difficult it can be to rearrange schedules we do offer a $100 gift card for actually bringing your spouse with you.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer12')"&gt;Scheduling- Hail Mary for Scheduling Conflicts (spouse ride work etc.)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer12" class="answer" onclick="toggleAnswer('answer12')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Hey I know that arranging calendars can be difficult. You mentioned how much this is affecting your life so I want to reserve this voucher for you and I can do that by just putting you on the calendar and if an emergency comes up we are happy to accommodate. So let’s just get you on the calendar and if anything changes we can adjust.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer13')"&gt;Beginning of the Call Cost Script&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer13" class="answer" onclick="toggleAnswer('answer13')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That is a great question. I just need to get a better understanding of your situation first. How many teeth are you missing?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer14')"&gt;I don't think I can afford it (concern)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer14" class="answer" onclick="toggleAnswer('answer14')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“We have seen many patients who felt the same way and it turned out we were able to work something out for them it really just comes down to meeting with our doctor to see what we can do for you.” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer15')"&gt;How much does this cost? (Script)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer15" class="answer" onclick="toggleAnswer('answer15')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 1:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“The cost can vary widely depending on a number of factors including your bone structure the surgery and the materials that will be needed. We would need to get you in for a consultation so we can evaluate your situation get you a quote and go over our payment plan options with you.” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 2:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s the main reason why we do the consultation is to get you a quote for the procedure. We would just need to get you in to get evaluated and see what your options are.” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 3:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Like I said before there are a number of factors that can affect the cost so we don’t really know what it will cost for you but we will definitely address that with you in the consultation after we evaluate your situation.” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 4:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“May I ask what’s holding you back from coming into a complimentary consultation to get the answers you are looking for?” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer16')"&gt;Does Nuvia take dental insurance? (Insurance Script)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer16" class="answer" onclick="toggleAnswer('answer16')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 1:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Insurance companies view dental implants as a cosmetic procedure so they help very little. But we do have a voucher that gives you 10% off any treatment you decide to move forward with which is better than anything your insurance would cover anyway.” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Deflection 2:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;What we see the most is that it might help up to $2000 so just bring it in with you and we can go from there. (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer17')"&gt;Where are you located?&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer17" class="answer" onclick="toggleAnswer('answer17')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“We have centers across the US! Where are you located?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;LEAD RESPONDS&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Great we see patients from that area all the time!” (redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer18')"&gt;I live too far away (Less than 3 hours away)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer18" class="answer" onclick="toggleAnswer('answer18')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. It’s 100% worth the trip and with the voucher we are giving out today it will cover the cost of the consultation.” (REDIRECT BACK TO FLOW)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer19')"&gt;I live too far away (More than 3 hours away)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer19" class="answer" onclick="toggleAnswer('answer19')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. At other implant centers you typically get a temporary denture the day of surgery which are bulky hard to talk with and breaks up to 40% of the time. It’s 100% worth the trip. For patients that live too far to travel for their consultation we set up a virtual consultation and will talk to you more about “potential travel accommodations.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer20')"&gt;Trying to schedule weeks away (Script)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer20" class="answer" onclick="toggleAnswer('answer20')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Hey I know that arranging calendars can be difficult and you mentioned how much this is affecting your life so I want to reserve this voucher for you and it would need to be redeemed by ________ and I can do that by just putting you on the calendar for a date you think works best and if an emergency comes up we are happy to accommodate. Looking back at our calendar do mornings or afternoons work better for you?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer21')"&gt;Do you do Single Implants? - DO NOT PROVOKE&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer21" class="answer" onclick="toggleAnswer('answer21')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Here at Nuvia we focus on full mouth restorations. That being said we can see how we can help you.” (redirect with clinical question)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;If brought up again and patient states they only need single implants DO NOT SET&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer22')"&gt;Addressing Medical Questions (Script)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer22" class="answer" onclick="toggleAnswer('answer22')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s a great question. We have treated many patients with various conditions and have learned it is very important for us to get a complete history of your situation. When you come in for your consultation we will review all of that information with you.”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer23')"&gt;Don’t the implants need to heal before you attach the prosthetic?&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer23" class="answer" onclick="toggleAnswer('answer23')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s a great question. They will be able to answer that question for you in great detail in the consultation.” (Redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer24')"&gt;What Materials Are Used?&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer24" class="answer" onclick="toggleAnswer('answer24')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer25')"&gt;How can you do permanent teeth in 24 hours? (or any other prying clinical question)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer25" class="answer" onclick="toggleAnswer('answer25')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer26')"&gt;Red Flags&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer26" class="answer" onclick="toggleAnswer('answer26')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Patients with an allergy to metal (Titanium)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Titanium Allergy Script:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“We use medical grade titanium here at Nuvia are you able to have medical grade titanium?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;IF ANSWER IS NO DO NOT SET&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Response to any other allergy:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“That’s a great question I know we have different methods and protocols for this but really the best people to answer these questions is the clinical team during the consult.” (REDIRECT BACK TO FLOW)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Cancer patients undergoing treatment- DOES NOT INCLUDE PATIENTS IN REMISSION&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Medicaid or Homeless- DOES NOT INCLUDE MEDICARE&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Age- If the patient is under the age of 22 DO NOT SET&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="question-box" onclick="toggleAnswer('answer27')"&gt;DO NOT SAY DO NOT DO LIST&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="answer27" class="answer" onclick="toggleAnswer('answer27')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do Not Say&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Do you want to come in?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Let me know”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“When works for you?”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Well you could wait until this gets bad enough or just come in for the consult”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Do you have a spouse that is coming with you” (Before offering Spoucher)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not ask if they are looking for single implants&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“Where are you located? I am just making sure you’re not too far”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;“I won’t charge the card it’s just a hold”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do Not Do&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not waive deposits- 2 strike rule&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not set leads who don't have $89 but first use the appropriate rebuttal to ensure this is true and not just a smoke screen&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Calls cannot exceed 15 minutes&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not ask if prospects are looking for single implants&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Don’t answer your own questions&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Don’t ask close ended questions&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not use loose reschedule language after the set. Example: “If anything comes up just call and let us know and we can get you rescheduled”&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not schedule patients with no quiz- inbound or outbound&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not disqualify a patient on the call unless it’s a red flag&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not refer prospects to another Drs office&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not mention Distance&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Do not offer another center or virtual if the prospect does bring it up&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Materials - Zirconia Titanium ceramic etc&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;We don’t talk about clinical questions&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="scripts.js"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/html&gt;</p>
+    <div class="container">
+        <div class="header">
+            <img src="Nuvia_logo.png" alt="Nuvia Logo">
+            <h1>Nuvia Script and Rebuttals</h1>
+        </div>
+        <div class="counter-container">
+            <div class="counter">
+                <p>Answers</p>
+                <p id="answers-count">0</p>
+                <button class="counter-button" onclick="incrementCounter('answers-count')">Up</button>
+                <button class="counter-button" onclick="decrementCounter('answers-count')">Down</button>
+                <button class="counter-button" onclick="resetCounter('answers-count')">Reset</button>
+            </div>
+            <div class="counter">
+                <p>Sets</p>
+                <p id="sets-count">0</p>
+                <button class="counter-button" onclick="incrementCounter('sets-count')">Up</button>
+                <button class="counter-button" onclick="decrementCounter('sets-count')">Down</button>
+                <button class="counter-button" onclick="resetCounter('sets-count')">Reset</button>
+            </div>
+        </div>
+        <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
+        <div class="script-container" id="script-container">
+            <div>
+                <h2>Script</h2>
+                <p>Hi LEAD NAME this is NAME with Nuvia Dental Implant Center. I saw that you filled out one of our forms inquiring about dental implants so I’m calling to get a better understanding of your situation and what you’ve been going through. Can you tell me a little bit more about your situation?</p>
+                <h3>Clinical Discovery</h3>
+                <p>Example Questions:</p>
+                <ul>
+                    <li>“How many teeth are you missing?”</li>
+                    <li>“Where are the missing teeth located are they molars or in the front?”</li>
+                    <li>“What about your other teeth what condition are those in?”</li>
+                </ul>
+                <h3>Pain Points and Value Statements</h3>
+                <p>“Okay now that I have a good understanding of your situation what is the main reason you are looking into getting your smile fixed?”</p>
+                <p>Lead Responds</p>
+                <p>“Okay so you are [PAIN POINT]. How does it affect you on a daily basis?”</p>
+                <h4>Chewing/Diet</h4>
+                <p>“I see here on the form that you are struggling with your (diet/ ability to chew.) Can you expand on :</p>
+                <ul>
+                    <li>“How is this affecting your ability to chew?”</li>
+                    <li>“Which foods are you having to avoid?”</li>
+                    <li>“So how are you chewing then?”</li>
+                </ul>
+                <p>Diet Value Statement:</p>
+                <p>“Chewing is the start of our digestive system and when you can’t chew right you aren’t able to eat as healthy or digest properly. In the consultation we’ll give you more information on how our permanent teeth in 24 Hours will get you back to eating the foods you want.”</p>
+                <h4>Pain Script</h4>
+                <p>“But with that said I also see here on the form that you are experiencing some pain. Can you expand on that?”</p>
+                <ul>
+                    <li>“Is the pain constant or is it mainly when you eat?”</li>
+                    <li>“How painful is it on a scale of 1 to 10?”</li>
+                    <li>“Does it make it hard for you to sleep?”--- “What other activities does it keep you from doing?”</li>
+                    <li>“How does that pain affect you on a day to day basis?”</li>
+                </ul>
+                <p>Pain Value Statement:</p>
+                <p>“Pain is an indicator of infection in the mouth. In your consultation they’ll take a 3D x-ray and they’ll be able to see the amount of infection that is present and we can talk to you about treatment options”</p>
+                <h4>Confidence Script</h4>
+                <p>“I see here on the form that you are experiencing a lack of confidence in your smile. Can you expand on that?”</p>
+                <ul>
+                    <li>“How is it affecting you socially?”</li>
+                </ul>
+                <p>Confidence Value Statement:</p>
+                <p>“I don’t know if you’ve seen our videos online but you can see how much people’s confidence changes literally overnight. In the consultation they’ll actually show you a digital mockup of what your smile could look like in 24 hours”</p>
+                <h4>Label Summary</h4>
+                <p>“So it sounds like you [INSERT WHY]. Is that right?”</p>
+                <p>“Dental implants are a permanent solution and can restore the function of your teeth. From what we have discussed I believe our permanent teeth in 24-Hours will be the best solution for you.”</p>
+                <h3>Scheduling</h3>
+                <p>“The first step is to come in for a consultation here in (location). The consultation really serves as a discovery period where we can take CT-Scans get you a treatment plan and answer any questions you might have.</p>
+                <p>Do mornings or Afternoons work better for you?” * get them in within 48 hour</p>
+                <p>“Awesome we just had ______ or ______ open up. Which works best?”</p>
+                <h3>Deposit and Close</h3>
+                <p>“When we schedule an appointment we reserve the entire office and staffs time for a whole hour so it’s important that you show up for your appointment. For that reason we do ask you to reserve your appointment with an $89 deposit which is refunded back to you when you come in for your appointment. Would you like to do that with a debit or credit card?”</p>
+                <p>Get $89</p>
+                <p>“I’ll send you an appointment confirmation and receipt. We’re excited to see you!”</p>
+                <h3>Voucher</h3>
+                <p>Goal: To make sure they understand that to qualify for the 10% discount they can’t reschedule or not show up to their first appointment. Ultimately we want them to show up for their appointment</p>
+                <p>“As you can imagine we have had an overwhelming response to this voucher with how many people we have trying to come in we are unable to accommodate reschedules and no shows. For that reason to qualify for that one time 10% discount you must show up to your consultation on {date and time} without rescheduling.”****This is our win marker for Balto so make sure to say this after every set</p>
+                <h3>Spoucher</h3>
+                <p>Goal: To make sure that if there is a spouse or significant other involved in the decision making process they show up and will receive a $100.</p>
+                <p>“Oh hey! ……Last thing……. the doctor does ask that if you have a spouse or significant other that they attend the consultation with you so we do offer a $100 gift card for bringing them with you to this appointment. Who should we put in the notes that will be coming with you on __________?”</p>
+            </div>
+        </div>
+        <div class="questions-container">
+            <div class="question-box" onclick="toggleAnswer('answer1')">Deposit Objection - Clarify</div>
+            <div id="answer1" class="answer" onclick="toggleAnswer('answer1')">
+                <p>“So you’re not paying for the consultation. The voucher will cover the cost for you. The $89 is just to hold your spot on the calendar to ensure everyone shows for their appointment and we can do that with a debit or credit card whatever works best for you.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer2')">Deposit - Scam/Uncomfortable</div>
+            <div id="answer2" class="answer" onclick="toggleAnswer('answer2')">
+                <p>“Since we are limited in the amount of people we can see each day when someone schedules an appointment and doesn’t show up it is unfair to everyone else that is seeking treatment. When you come in the first thing we do is refund that deposit to you. Most of our patients use a debit or credit card what works best for you?”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer3')">Deposit - Doesn’t Have $89/ No</div>
+            <div id="answer3" class="answer" onclick="toggleAnswer('answer3')">
+                <p>“Oh I gotcha sometimes when I hear that it may be something else holding you back like you’re nervous to come in for an appointment or you’re nervous about giving your credit card over the phone. Is it one of those?”</p>
+                <p>IF LEAD RESPONDS THEY DON’T HAVE $89 - *RED FLAG PROTOCOL*</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer4')">Deposit Driving Objection</div>
+            <div id="answer4" class="answer" onclick="toggleAnswer('answer4')">
+                <p>“Okay no worries I'm just taking some notes for the Dr so I’ll wait until you find a safe spot to pull over.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer5')">Deposit- Away from Card Objection</div>
+            <div id="answer5" class="answer" onclick="toggleAnswer('answer5')">
+                <p>“Okay no worries I’m just putting in some notes so you can run and grab that take your time.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer6')">Call Back - Beginning of the call/Busy (Pre Discovery)</div>
+            <div id="answer6" class="answer" onclick="toggleAnswer('answer6')">
+                <p>“I can call you back but I'm not sure we can even help you. Tell me real quick how many teeth are you missing?”</p>
+                <p>REDIRECT BACK TO FLOW WITH A QUESTION</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer7')">Call back - Middle of the call (Mid - Discovery)</div>
+            <div id="answer7" class="answer" onclick="toggleAnswer('answer7')">
+                <p>“Yeah it will only take a couple more minutes in fact I think you would be a great candidate”</p>
+                <p>REDIRECT BACK TO FLOW WITH A QUESTION</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer8')">Scheduling- Coordinating a Ride</div>
+            <div id="answer8" class="answer" onclick="toggleAnswer('answer8')">
+                <p>“How do you normally arrange to go to your doctor appointments?”</p>
+                <p>LEAD RESPONDS</p>
+                <p>“Okay I just want to make sure I can get that voucher reserved for you today so let’s go ahead and find a time that will work with your schedule and that way it will give you plenty of time to arrange that ride.”</p>
+                <p>STILL WON’T SCHEDULE</p>
+                <p>“Okay I know this is really important to you and we only have a couple of those vouchers left so let’s get you scheduled and then we can move as needed when you get with your ride. So looking back at my calendar would you like to do morning or afternoon?”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer9')">Scheduling- Needs to Check with Work</div>
+            <div id="answer9" class="answer" onclick="toggleAnswer('answer9')">
+                <p>“What does your work schedule look like this week?”</p>
+                <p>LEAD RESPONDS</p>
+                <p>“To accommodate our busier patients we do have availability during lunch time early in the morning or later in the afternoon. What would work best?”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer10')">Schedule- Needs to Check Calendar</div>
+            <div id="answer10" class="answer" onclick="toggleAnswer('answer10')">
+                <p>“Okay go ahead and pull that up I’m pulling up mine right now as well.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer11')">Schedule- Needs to Talk to Spouse</div>
+            <div id="answer11" class="answer" onclick="toggleAnswer('answer11')">
+                <p>“Okay let’s go ahead and find a time that works best for YOU right now. Do mornings or afternoons work best for you?”</p>
+                <p>Lead Responds with Time</p>
+                <p>“So let’s schedule the appointment for that time and because we understand how difficult it can be to rearrange schedules we do offer a $100 gift card for actually bringing your spouse with you.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer12')">Scheduling- Hail Mary for Scheduling Conflicts (spouse ride work etc.)</div>
+            <div id="answer12" class="answer" onclick="toggleAnswer('answer12')">
+                <p>“Hey I know that arranging calendars can be difficult. You mentioned how much this is affecting your life so I want to reserve this voucher for you and I can do that by just putting you on the calendar and if an emergency comes up we are happy to accommodate. So let’s just get you on the calendar and if anything changes we can adjust.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer13')">Beginning of the Call Cost Script</div>
+            <div id="answer13" class="answer" onclick="toggleAnswer('answer13')">
+                <p>“That is a great question. I just need to get a better understanding of your situation first. How many teeth are you missing?”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer14')">I don't think I can afford it (concern)</div>
+            <div id="answer14" class="answer" onclick="toggleAnswer('answer14')">
+                <p>“We have seen many patients who felt the same way and it turned out we were able to work something out for them it really just comes down to meeting with our doctor to see what we can do for you.” (redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer15')">How much does this cost? (Script)</div>
+            <div id="answer15" class="answer" onclick="toggleAnswer('answer15')">
+                <p>Deflection 1:</p>
+                <p>“The cost can vary widely depending on a number of factors including your bone structure the surgery and the materials that will be needed. We would need to get you in for a consultation so we can evaluate your situation get you a quote and go over our payment plan options with you.” (redirect back to flow)</p>
+                <p>Deflection 2:</p>
+                <p>“That’s the main reason why we do the consultation is to get you a quote for the procedure. We would just need to get you in to get evaluated and see what your options are.” (redirect back to flow)</p>
+                <p>Deflection 3:</p>
+                <p>“Like I said before there are a number of factors that can affect the cost so we don’t really know what it will cost for you but we will definitely address that with you in the consultation after we evaluate your situation.” (redirect back to flow)</p>
+                <p>Deflection 4:</p>
+                <p>“May I ask what’s holding you back from coming into a complimentary consultation to get the answers you are looking for?” (redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer16')">Does Nuvia take dental insurance? (Insurance Script)</div>
+            <div id="answer16" class="answer" onclick="toggleAnswer('answer16')">
+                <p>Deflection 1:</p>
+                <p>“Insurance companies view dental implants as a cosmetic procedure so they help very little. But we do have a voucher that gives you 10% off any treatment you decide to move forward with which is better than anything your insurance would cover anyway.” (redirect back to flow)</p>
+                <p>Deflection 2:</p>
+                <p>What we see the most is that it might help up to $2000 so just bring it in with you and we can go from there. (redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer17')">Where are you located?</div>
+            <div id="answer17" class="answer" onclick="toggleAnswer('answer17')">
+                <p>“We have centers across the US! Where are you located?”</p>
+                <p>LEAD RESPONDS</p>
+                <p>“Great we see patients from that area all the time!” (redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer18')">I live too far away (Less than 3 hours away)</div>
+            <div id="answer18" class="answer" onclick="toggleAnswer('answer18')">
+                <p>“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. It’s 100% worth the trip and with the voucher we are giving out today it will cover the cost of the consultation.” (REDIRECT BACK TO FLOW)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer19')">I live too far away (More than 3 hours away)</div>
+            <div id="answer19" class="answer" onclick="toggleAnswer('answer19')">
+                <p>“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. At other implant centers you typically get a temporary denture the day of surgery which are bulky hard to talk with and breaks up to 40% of the time. It’s 100% worth the trip. For patients that live too far to travel for their consultation we set up a virtual consultation and will talk to you more about “potential travel accommodations.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer20')">Trying to schedule weeks away (Script)</div>
+            <div id="answer20" class="answer" onclick="toggleAnswer('answer20')">
+                <p>“Hey I know that arranging calendars can be difficult and you mentioned how much this is affecting your life so I want to reserve this voucher for you and it would need to be redeemed by ________ and I can do that by just putting you on the calendar for a date you think works best and if an emergency comes up we are happy to accommodate. Looking back at our calendar do mornings or afternoons work better for you?”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer21')">Do you do Single Implants? - DO NOT PROVOKE</div>
+            <div id="answer21" class="answer" onclick="toggleAnswer('answer21')">
+                <p>“Here at Nuvia we focus on full mouth restorations. That being said we can see how we can help you.” (redirect with clinical question)</p>
+                <p>If brought up again and patient states they only need single implants DO NOT SET</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer22')">Addressing Medical Questions (Script)</div>
+            <div id="answer22" class="answer" onclick="toggleAnswer('answer22')">
+                <p>“That’s a great question. We have treated many patients with various conditions and have learned it is very important for us to get a complete history of your situation. When you come in for your consultation we will review all of that information with you.”</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer23')">Don’t the implants need to heal before you attach the prosthetic?</div>
+            <div id="answer23" class="answer" onclick="toggleAnswer('answer23')">
+                <p>“That’s a great question. They will be able to answer that question for you in great detail in the consultation.” (Redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer24')">What Materials Are Used?</div>
+            <div id="answer24" class="answer" onclick="toggleAnswer('answer24')">
+                <p>“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer25')">How can you do permanent teeth in 24 hours? (or any other prying clinical question)</div>
+            <div id="answer25" class="answer" onclick="toggleAnswer('answer25')">
+                <p>“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer26')">Red Flags</div>
+            <div id="answer26" class="answer" onclick="toggleAnswer('answer26')">
+                <p>Patients with an allergy to metal (Titanium)</p>
+                <p>Titanium Allergy Script:</p>
+                <p>“We use medical grade titanium here at Nuvia are you able to have medical grade titanium?”</p>
+                <p>IF ANSWER IS NO DO NOT SET</p>
+                <p>Response to any other allergy:</p>
+                <p>“That’s a great question I know we have different methods and protocols for this but really the best people to answer these questions is the clinical team during the consult.” (REDIRECT BACK TO FLOW)</p>
+                <p>Cancer patients undergoing treatment- DOES NOT INCLUDE PATIENTS IN REMISSION</p>
+                <p>Medicaid or Homeless- DOES NOT INCLUDE MEDICARE</p>
+                <p>Age- If the patient is under the age of 22 DO NOT SET</p>
+            </div>
+            <div class="question-box" onclick="toggleAnswer('answer27')">DO NOT SAY DO NOT DO LIST</div>
+            <div id="answer27" class="answer" onclick="toggleAnswer('answer27')">
+                <p>Do Not Say</p>
+                <p>“Do you want to come in?”</p>
+                <p>“Let me know”</p>
+                <p>“When works for you?”</p>
+                <p>“Well you could wait until this gets bad enough or just come in for the consult”</p>
+                <p>“Do you have a spouse that is coming with you” (Before offering Spoucher)</p>
+                <p>Do not ask if they are looking for single implants</p>
+                <p>“Where are you located? I am just making sure you’re not too far”</p>
+                <p>“I won’t charge the card it’s just a hold”</p>
+                <p>Do Not Do</p>
+                <p>Do not waive deposits- 2 strike rule</p>
+                <p>Do not set leads who don't have $89 but first use the appropriate rebuttal to ensure this is true and not just a smoke screen</p>
+                <p>Calls cannot exceed 15 minutes</p>
+                <p>Do not ask if prospects are looking for single implants</p>
+                <p>Don’t answer your own questions</p>
+                <p>Don’t ask close ended questions</p>
+                <p>Do not use loose reschedule language after the set. Example: “If anything comes up just call and let us know and we can get you rescheduled”</p>
+                <p>Do not schedule patients with no quiz- inbound or outbound</p>
+                <p>Do not disqualify a patient on the call unless it’s a red flag</p>
+                <p>Do not refer prospects to another Drs office</p>
+                <p>Do not mention Distance</p>
+                <p>Do not offer another center or virtual if the prospect does bring it up</p>
+                <p>Materials - Zirconia Titanium ceramic etc</p>
+                <p>We don’t talk about clinical questions</p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
 </body>
+
 </html>
