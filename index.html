@@ -23,19 +23,29 @@
         .answer {
             text-align: center;
             display: none;
-            position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -20%);
             background-color: #FC0606;
             border: 1px solid #000;
             padding: 15px;
             z-index: 1000;
         }
+        .answer.fixed {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+        }
         .answer.under-buttons {
             position: absolute;
             top: auto;
             bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .answer.below-buttons {
+            position: absolute;
+            top: calc(100% + 1in);
+            left: 50%;
+            transform: translateX(-50%);
         }
         body.active-answer {
             overflow: hidden;
@@ -386,9 +396,11 @@
 
             var scriptContainer = document.getElementById('script-container');
             if (scriptContainer.style.display === "none") {
-                answer.classList.add('under-buttons');
+                answer.classList.remove('fixed');
+                answer.classList.add('below-buttons');
             } else {
-                answer.classList.remove('under-buttons');
+                answer.classList.remove('below-buttons');
+                answer.classList.add('fixed');
             }
         }
 
@@ -414,13 +426,17 @@
             var scriptContainer = document.getElementById('script-container');
             if (scriptContainer.style.display === "none") {
                 scriptContainer.style.display = "flex";
+                var answers = document.getElementsByClassName('answer');
+                for (var i = 0; i < answers.length; i++) {
+                    answers[i].classList.remove('below-buttons');
+                    answers[i].classList.add('fixed');
+                }
             } else {
                 scriptContainer.style.display = "none";
                 var answers = document.getElementsByClassName('answer');
                 for (var i = 0; i < answers.length; i++) {
-                    if (answers[i].style.display === "block") {
-                        answers[i].classList.add('under-buttons');
-                    }
+                    answers[i].classList.remove('fixed');
+                    answers[i].classList.add('below-buttons');
                 }
             }
         }
