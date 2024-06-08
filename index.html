@@ -16,7 +16,7 @@
             text-align: center;
             display: inline-block;
             box-sizing: border-box;
-            transform: scale(1.02); /* Reduced size by 15% */
+            transform: scale(1.02);
         }
         .question-box.active {
             background-color: yellow;
@@ -32,13 +32,13 @@
         }
         .answer.fixed {
             position: fixed;
-            top: calc(100% - 3in);
+            top: 50%;
             left: 50%;
-            transform: translate(-50%, -20%);
+            transform: translate(-50%, -50%);
         }
         .answer.below-buttons {
             position: fixed;
-            top: calc(100% - 3in);
+            top: calc(100% - 4in); /* Moved 1 inch up */
             left: 50%;
             transform: translateX(-50%);
         }
@@ -109,7 +109,7 @@
             padding: 5px 10px;
             margin: 2px;
             cursor: pointer;
-            transform: scale(1.02); /* Reduced size by 15% */
+            transform: scale(1.02);
         }
         .toggle-button {
             background-color: #c0c0c0;
@@ -117,7 +117,7 @@
             padding: 10px 20px;
             cursor: pointer;
             position: fixed;
-            left: calc(50% + 3in); /* Moved 3 inches to the right */
+            left: calc(50% + 3in);
             transform: translateX(-50%);
             top: 80px;
         }
@@ -398,7 +398,9 @@
             } else {
                 answer.classList.remove('below-buttons');
                 answer.classList.add('fixed');
-                answer.style.top = 'calc(100% - 3in)'; // Move 3 inches up
+                answer.style.top = '50%';
+                answer.style.left = '50%';
+                answer.style.transform = 'translate(-50%, -50%)';
             }
         }
 
@@ -428,7 +430,9 @@
                 for (var i = 0; i < answers.length; i++) {
                     answers[i].classList.remove('below-buttons');
                     answers[i].classList.add('fixed');
-                    answers[i].style.top = 'calc(100% - 3in)'; // Move 3 inches up
+                    answers[i].style.top = '50%';
+                    answers[i].style.left = '50%';
+                    answers[i].style.transform = 'translate(-50%, -50%)';
                 }
             } else {
                 scriptContainer.style.display = "none";
