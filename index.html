@@ -32,6 +32,11 @@
             padding: 15px;
             z-index: 1000;
         }
+        .answer.under-buttons {
+            position: absolute;
+            top: auto;
+            bottom: 20px;
+        }
         body.active-answer {
             overflow: hidden;
         }
@@ -378,6 +383,13 @@
                 document.body.classList.remove("active-answer");
                 questionBox.classList.remove("active");
             }
+
+            var scriptContainer = document.getElementById('script-container');
+            if (scriptContainer.style.display === "none") {
+                answer.classList.add('under-buttons');
+            } else {
+                answer.classList.remove('under-buttons');
+            }
         }
 
         function incrementCounter(id) {
@@ -404,6 +416,12 @@
                 scriptContainer.style.display = "flex";
             } else {
                 scriptContainer.style.display = "none";
+                var answers = document.getElementsByClassName('answer');
+                for (var i = 0; i < answers.length; i++) {
+                    if (answers[i].style.display === "block") {
+                        answers[i].classList.add('under-buttons');
+                    }
+                }
             }
         }
     </script>
