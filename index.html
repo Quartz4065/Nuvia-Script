@@ -398,6 +398,7 @@
             } else {
                 answer.classList.remove('below-buttons');
                 answer.classList.add('fixed');
+                answer.style.top = 'calc(100% - 3in)'; // Move 3 inches up
             }
         }
 
@@ -427,6 +428,7 @@
                 for (var i = 0; i < answers.length; i++) {
                     answers[i].classList.remove('below-buttons');
                     answers[i].classList.add('fixed');
+                    answers[i].style.top = 'calc(100% - 3in)'; // Move 3 inches up
                 }
             } else {
                 scriptContainer.style.display = "none";
