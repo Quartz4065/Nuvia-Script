@@ -16,6 +16,7 @@
             text-align: center;
             display: inline-block;
             box-sizing: border-box;
+            transform: scale(0.7); /* Reduce size by 30% */
         }
         .question-box.active {
             background-color: yellow;
@@ -114,6 +115,7 @@
             padding: 5px 10px;
             margin: 2px;
             cursor: pointer;
+            transform: scale(0.7); /* Reduce size by 30% */
         }
         .toggle-button {
             background-color: #c0c0c0;
@@ -123,6 +125,17 @@
             position: absolute;
             right: 10px;
             top: 10px;
+            transform: scale(0.7); /* Reduce size by 30% */
+        }
+        .ringcentral-extension {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px; /* Adjust width as needed */
+            height: 100%;
+            border: none;
+            z-index: 1000;
+            background: white;
         }
     </style>
 </head>
@@ -373,6 +386,9 @@
                 <p>Materials - Zirconia Titanium ceramic etc</p>
                 <p>We don’t talk about clinical questions</p>
             </div>
+        </div>
+        <div class="ringcentral-extension">
+            <iframe src="https://app.ringcentral.com" title="RingCentral for Google"></iframe>
         </div>
     </div>
     <script>
