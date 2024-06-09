@@ -178,6 +178,7 @@
             margin-top: 10px;
             border-radius: 5px;
             overflow: hidden;
+            display: none;
         }
         #volume-level {
             height: 100%;
@@ -516,6 +517,7 @@
         const startButton = document.getElementById('start-recording');
         const stopButton = document.getElementById('stop-recording');
         const audioPlayback = document.getElementById('audio-playback');
+        const volumeBar = document.getElementById('volume-bar');
         const volumeLevel = document.getElementById('volume-level');
 
         startButton.addEventListener('click', async () => {
@@ -543,7 +545,7 @@
             mediaRecorder.start();
             startButton.disabled = true;
             stopButton.disabled = false;
-
+            volumeBar.style.display = 'block';
             visualizeVolume();
         });
 
@@ -551,10 +553,13 @@
             mediaRecorder.stop();
             startButton.disabled = false;
             stopButton.disabled = true;
+            volumeBar.style.display = 'none';
         });
 
         function visualizeVolume() {
-            requestAnimationFrame(visualizeVolume);
+            if (mediaRecorder.state === 'recording') {
+                requestAnimationFrame(visualizeVolume);
+            }
             analyser.getByteFrequencyData(dataArray);
             let max = Math.max(...dataArray);
             volumeLevel.style.width = (max / 255) * 100 + '%';
