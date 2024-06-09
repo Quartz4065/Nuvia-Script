@@ -120,9 +120,9 @@
             top: 80px;
         }
         .call-notes-container {
-            position: fixed;
+            position: absolute;
             right: 10px;
-            bottom: 20%;
+            top: calc(50% + 4in);
             width: 20%;
             min-width: 300px;
             max-width: 400px;
@@ -153,9 +153,9 @@
             margin-right: 5px;
         }
         .record-container {
-            position: fixed;
+            position: absolute;
             right: 10px;
-            bottom: 10px;
+            top: calc(50% + 2.5in);
             background-color: silver;
             padding: 10px;
             border: 1px solid #000;
@@ -170,25 +170,6 @@
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
-        }
-        @media (max-width: 768px) {
-            .counter-container {
-                display: none;
-            }
-            .toggle-button {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .call-notes-container {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 30%;
-            }
-            .record-container {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 20px;
-            }
         }
     </style>
 </head>
@@ -439,17 +420,17 @@
                 <p>We don’t talk about clinical questions</p>
             </div>
         </div>
+        <div class="record-container">
+            <button class="record-button" id="start-recording">Start Recording</button>
+            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+            <audio id="audio-playback" controls></audio>
+            <button class="record-button" id="download-recording" disabled>Download Recording</button>
+        </div>
         <div class="call-notes-container">
             <label for="call-notes">Call Notes</label>
             <textarea id="call-notes"></textarea>
             <button onclick="copyCallNotes()">Copy</button>
             <button onclick="clearCallNotes()">Clear</button>
-        </div>
-        <div class="record-container">
-            <button class="record-button" id="start-recording">Start Recording</button>
-            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
-            <audio id="audio-playback" controls></audio>
-            <button class="record-button" id="send-recording" disabled>Send Recording</button>
         </div>
     </div>
     <script>
@@ -516,7 +497,7 @@
         const startButton = document.getElementById('start-recording');
         const stopButton = document.getElementById('stop-recording');
         const audioPlayback = document.getElementById('audio-playback');
-        const sendButton = document.getElementById('send-recording');
+        const downloadButton = document.getElementById('download-recording');
 
         startButton.addEventListener('click', async () => {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -533,7 +514,9 @@
                 const blob = new Blob(recordedChunks, { type: 'audio/webm' });
                 const url = URL.createObjectURL(blob);
                 audioPlayback.src = url;
-                sendButton.disabled = false;
+                downloadButton.href = url;
+                downloadButton.download = 'recording.webm';
+                downloadButton.disabled = false;
             };
 
             mediaRecorder.start();
@@ -545,27 +528,6 @@
             mediaRecorder.stop();
             startButton.disabled = false;
             stopButton.disabled = true;
-        });
-
-        sendButton.addEventListener('click', () => {
-            const blob = new Blob(recordedChunks, { type: 'audio/webm' });
-            const file = new File([blob], 'recording.webm', { type: 'audio/webm' });
-
-            // Use EmailJS or SMTP.js to send the email
-            const formData = new FormData();
-            formData.append('file', file);
-
-            fetch('https://your-email-service-endpoint', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Recording sent successfully!');
-            })
-            .catch(error => {
-                console.error('Error sending recording:', error);
-            });
         });
     </script>
 </body>
