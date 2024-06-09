@@ -110,88 +110,26 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .counter-container {
+        .controls-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
-            top: 50%;
-            transform: translateY(-50%);
+            left: 10px;
+            top: calc(10px + 1in);
+            gap: 10px;
         }
-        .counter {
-            background-color: skyblue;
+        .counter, .record-container, .call-notes-container {
+            background-color: silver;
             color: black;
-            border: 2px skyblue;
+            border: 1px solid #000;
             border-radius: 10px;
             padding: 10px;
             text-align: center;
-            margin-bottom: 10px;
-        }
-        .counter-button {
-            background-color: skyblue;
-            color: black;
-            border: 1px solid #000;
-            padding: 5px 10px;
-            margin: 2px;
-            cursor: pointer;
-            transform: scale(1.02);
-        }
-        .toggle-button {
-            background-color: skyblue;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            position: fixed;
-            right: 10px;
-            top: 80px;
-        }
-        .record-container {
-            position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
-            top: calc(50% + 2in);
-            background-color: silver;
-            padding: 10px;
-            border: 1px solid #000;
-            border-radius: 10px;
-            width: 13%; /* Reduce width by 35% */
             min-width: 200px;
-            margin-top: 0.25in;
+            margin-top: 10px;
         }
-        .record-button {
-            background-color: skyblue;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-        .call-notes-container {
-            position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
-            top: calc(50% + 4in);
-            width: 13%; /* Reduce width by 35% */
-            min-width: 200px;
-            margin-top: 0.25in;
-        }
-        .call-notes-container label {
-            display: block;
-            margin-bottom: 5px;
-            color: silver;
-            font-weight: bold;
-        }
-        .call-notes-container textarea {
-            width: 100%;
-            height: auto;
-            min-height: 100px;
-            resize: vertical;
-            box-sizing: border-box;
-            padding: 10px;
-            background-color: silver;
-            border: 1px solid #000;
-            color: black;
-            font-family: Arial, sans-serif;
-        }
-        .call-notes-container button {
+        .counter-button, .record-button, .call-notes-container button {
             background-color: skyblue;
             border: none;
             padding: 10px;
@@ -214,7 +152,7 @@
         }
         #date-time {
             position: fixed;
-            top: 10px;
+            top: 20px;
             left: 10px;
             color: silver;
             font-size: 16px;
@@ -235,7 +173,17 @@
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
             <h1>Nuvia ISR Command Center</h1>
         </div>
-        <div class="counter-container">
+        <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
+        <div class="controls-container">
+            <div class="record-container">
+                <button class="record-button" id="start-recording">Start Recording</button>
+                <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+                <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
+                <audio id="audio-playback" controls></audio>
+                <div id="volume-bar">
+                    <div id="volume-level"></div>
+                </div>
+            </div>
             <div class="counter">
                 <p>Answers</p>
                 <p id="answers-count">0</p>
@@ -250,8 +198,13 @@
                 <button class="counter-button" onclick="decrementCounter('sets-count')">Down</button>
                 <button class="counter-button" onclick="resetCounter('sets-count')">Reset</button>
             </div>
+            <div class="call-notes-container">
+                <label for="call-notes">Call Notes</label>
+                <textarea id="call-notes"></textarea>
+                <button onclick="copyCallNotes()">Copy</button>
+                <button onclick="clearCallNotes()">Clear</button>
+            </div>
         </div>
-        <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
         <div class="script-container" id="script-container">
             <div>
                 <h2>Script</h2>
@@ -476,24 +429,10 @@
                 <p>We don’t talk about clinical questions</p>
             </div>
         </div>
-        <div class="record-container">
-            <button class="record-button" id="start-recording">Start Recording</button>
-            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
-            <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
-            <audio id="audio-playback" controls></audio>
-            <div id="volume-bar">
-                <div id="volume-level"></div>
-            </div>
-        </div>
-        <div class="call-notes-container">
-            <label for="call-notes">Call Notes</label>
-            <textarea id="call-notes"></textarea>
-            <button onclick="copyCallNotes()">Copy</button>
-            <button onclick="clearCallNotes()">Clear</button>
-        </div>
     </div>
-    <div id="crm" class="container iframe-container">
-        <iframe src="https://www.google.com"></iframe>
+    <div id="crm" class="container" style="background-color: black;">
+        <h1>CRM Section</h1>
+        <!-- Add your CRM content here -->
     </div>
     <script>
         function updateDateTime() {
