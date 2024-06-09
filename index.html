@@ -514,245 +514,247 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
-        // Initialize Supabase client
-        const supabaseUrl = 'https://pljzugtmeddspytwzjfk.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsanp1Z3RtZWRkc3B5dHd6amZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5MTgzOTYsImV4cCI6MjAzMzQ5NDM5Nn0.vLBiM-yVmqgH7hsRfeQ3k_0jgtGKyZ6WKsSDqCWSePw';
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Supabase client
+            const supabaseUrl = 'https://pljzugtmeddspytwzjfk.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsanp1Z3RtZWRkc3B5dHd6amZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5MTgzOTYsImV4cCI6MjAzMzQ5NDM5Nn0.vLBiM-yVmqgH7hsRfeQ3k_0jgtGKyZ6WKsSDqCWSePw';
+            const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        async function signUp() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            console.log('Sign Up with', email);
-            try {
-                const { error } = await supabase.auth.signUp({ email, password });
-                if (error) {
+            async function signUp() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                console.log('Sign Up with', email);
+                try {
+                    const { error } = await supabase.auth.signUp({ email, password });
+                    if (error) {
+                        console.error('Error signing up:', error);
+                        alert('Error signing up: ' + error.message);
+                    } else {
+                        alert('Sign up successful!');
+                    }
+                } catch (error) {
                     console.error('Error signing up:', error);
-                    alert('Error signing up: ' + error.message);
-                } else {
-                    alert('Sign up successful!');
                 }
-            } catch (error) {
-                console.error('Error signing up:', error);
             }
-        }
 
-        async function signIn() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            console.log('Sign In with', email);
-            try {
-                const { error } = await supabase.auth.signIn({ email, password });
-                if (error) {
+            async function signIn() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                console.log('Sign In with', email);
+                try {
+                    const { error } = await supabase.auth.signInWithPassword({ email, password });
+                    if (error) {
+                        console.error('Error signing in:', error);
+                        alert('Error signing in: ' + error.message);
+                    } else {
+                        document.getElementById('auth-container').style.display = 'none';
+                        document.getElementById('chat-container').style.display = 'block';
+                        loadMessages();
+                    }
+                } catch (error) {
                     console.error('Error signing in:', error);
-                    alert('Error signing in: ' + error.message);
-                } else {
-                    document.getElementById('auth-container').style.display = 'none';
-                    document.getElementById('chat-container').style.display = 'block';
-                    loadMessages();
                 }
-            } catch (error) {
-                console.error('Error signing in:', error);
             }
-        }
 
-        async function signOut() {
-            console.log('Sign Out');
-            try {
-                const { error } = await supabase.auth.signOut();
-                if (error) {
+            async function signOut() {
+                console.log('Sign Out');
+                try {
+                    const { error } = await supabase.auth.signOut();
+                    if (error) {
+                        console.error('Error signing out:', error);
+                        alert('Error signing out: ' + error.message);
+                    } else {
+                        document.getElementById('auth-container').style.display = 'block';
+                        document.getElementById('chat-container').style.display = 'none';
+                    }
+                } catch (error) {
                     console.error('Error signing out:', error);
-                    alert('Error signing out: ' + error.message);
-                } else {
-                    document.getElementById('auth-container').style.display = 'block';
-                    document.getElementById('chat-container').style.display = 'none';
                 }
-            } catch (error) {
-                console.error('Error signing out:', error);
             }
-        }
 
-        async function linkIdentity() {
-            console.log('Link Identity with Google');
-            try {
-                const { data, error } = await supabase.auth.linkIdentity({ provider: 'google' });
-                if (error) {
+            async function linkIdentity() {
+                console.log('Link Identity with Google');
+                try {
+                    const { data, error } = await supabase.auth.linkIdentity({ provider: 'google' });
+                    if (error) {
+                        console.error('Error linking identity:', error);
+                        alert('Error linking identity: ' + error.message);
+                    } else {
+                        alert('Google account linked successfully!');
+                    }
+                } catch (error) {
                     console.error('Error linking identity:', error);
-                    alert('Error linking identity: ' + error.message);
-                } else {
-                    alert('Google account linked successfully!');
                 }
-            } catch (error) {
-                console.error('Error linking identity:', error);
             }
-        }
 
-        async function loadMessages() {
-            console.log('Load Messages');
-            try {
-                const { data, error } = await supabase.from('messages').select('*');
-                if (error) {
-                    console.error('Error loading messages:', error);
-                    alert('Error loading messages: ' + error.message);
-                } else {
-                    const messagesContainer = document.getElementById('messages');
-                    messagesContainer.innerHTML = '';
-                    data.forEach(message => {
-                        const messageElement = document.createElement('div');
-                        messageElement.textContent = message.content;
-                        messagesContainer.appendChild(messageElement);
-                    });
-                    supabase
-                        .from('messages')
-                        .on('INSERT', payload => {
+            async function loadMessages() {
+                console.log('Load Messages');
+                try {
+                    const { data, error } = await supabase.from('messages').select('*');
+                    if (error) {
+                        console.error('Error loading messages:', error);
+                        alert('Error loading messages: ' + error.message);
+                    } else {
+                        const messagesContainer = document.getElementById('messages');
+                        messagesContainer.innerHTML = '';
+                        data.forEach(message => {
                             const messageElement = document.createElement('div');
-                            messageElement.textContent = payload.new.content;
-                            document.getElementById('messages').appendChild(messageElement);
-                        })
-                        .subscribe();
+                            messageElement.textContent = message.content;
+                            messagesContainer.appendChild(messageElement);
+                        });
+                        supabase
+                            .from('messages')
+                            .on('INSERT', payload => {
+                                const messageElement = document.createElement('div');
+                                messageElement.textContent = payload.new.content;
+                                document.getElementById('messages').appendChild(messageElement);
+                            })
+                            .subscribe();
+                    }
+                } catch (error) {
+                    console.error('Error loading messages:', error);
                 }
-            } catch (error) {
-                console.error('Error loading messages:', error);
             }
-        }
 
-        async function sendMessage() {
-            const messageInput = document.getElementById('message-input').value;
-            console.log('Send Message:', messageInput);
-            try {
-                const { error } = await supabase.from('messages').insert([{ content: messageInput }]);
-                if (error) {
+            async function sendMessage() {
+                const messageInput = document.getElementById('message-input').value;
+                console.log('Send Message:', messageInput);
+                try {
+                    const { error } = await supabase.from('messages').insert([{ content: messageInput }]);
+                    if (error) {
+                        console.error('Error sending message:', error);
+                        alert('Error sending message: ' + error.message);
+                    } else {
+                        document.getElementById('message-input').value = '';
+                    }
+                } catch (error) {
                     console.error('Error sending message:', error);
-                    alert('Error sending message: ' + error.message);
+                }
+            }
+
+            // Existing JavaScript for other functionalities
+            function toggleAnswer(id) {
+                var answer = document.getElementById(id);
+                var questionBox = document.querySelector(".question-box[onclick*='" + id + "']");
+                var answers = document.getElementsByClassName("answer");
+
+                if (answer.style.display === "none" || answer.style.display === "") {
+                    for (var i = 0; i < answers.length; i++) {
+                        answers[i].style.display = "none";
+                    }
+                    answer.style.display = "block";
+                    document.body.classList.add("active-answer");
+                    questionBox.classList.add("active");
                 } else {
-                    document.getElementById('message-input').value = '';
+                    answer.style.display = "none";
+                    document.body.classList.remove("active-answer");
+                    questionBox.classList.remove("active");
                 }
-            } catch (error) {
-                console.error('Error sending message:', error);
             }
-        }
 
-        // Existing JavaScript for other functionalities
-        function toggleAnswer(id) {
-            var answer = document.getElementById(id);
-            var questionBox = document.querySelector(".question-box[onclick*='" + id + "']");
-            var answers = document.getElementsByClassName("answer");
+            function incrementCounter(id) {
+                var counter = document.getElementById(id);
+                counter.innerText = parseInt(counter.innerText) + 1;
+            }
 
-            if (answer.style.display === "none" || answer.style.display === "") {
-                for (var i = 0; i < answers.length; i++) {
-                    answers[i].style.display = "none";
+            function decrementCounter(id) {
+                var counter = document.getElementById(id);
+                var count = parseInt(counter.innerText);
+                if (count > 0) {
+                    counter.innerText = count - 1;
                 }
-                answer.style.display = "block";
-                document.body.classList.add("active-answer");
-                questionBox.classList.add("active");
-            } else {
-                answer.style.display = "none";
-                document.body.classList.remove("active-answer");
-                questionBox.classList.remove("active");
             }
-        }
 
-        function incrementCounter(id) {
-            var counter = document.getElementById(id);
-            counter.innerText = parseInt(counter.innerText) + 1;
-        }
-
-        function decrementCounter(id) {
-            var counter = document.getElementById(id);
-            var count = parseInt(counter.innerText);
-            if (count > 0) {
-                counter.innerText = count - 1;
+            function resetCounter(id) {
+                var counter = document.getElementById(id);
+                counter.innerText = 0;
             }
-        }
 
-        function resetCounter(id) {
-            var counter = document.getElementById(id);
-            counter.innerText = 0;
-        }
-
-        function toggleScript() {
-            var scriptContainer = document.getElementById('script-container');
-            if (scriptContainer.style.display === "none") {
-                scriptContainer.style.display = "flex";
-            } else {
-                scriptContainer.style.display = "none";
-            }
-        }
-
-        function copyCallNotes() {
-            var callNotes = document.getElementById("call-notes");
-            callNotes.select();
-            document.execCommand("copy");
-        }
-
-        function clearCallNotes() {
-            document.getElementById("call-notes").value = "";
-        }
-
-        // Recording functionality
-        let mediaRecorder;
-        let recordedChunks = [];
-        let audioContext;
-        let analyser;
-        let dataArray;
-        let source;
-
-        const startButton = document.getElementById('start-recording');
-        const stopButton = document.getElementById('stop-recording');
-        const clearButton = document.getElementById('clear-recording');
-        const audioPlayback = document.getElementById('audio-playback');
-        const volumeBar = document.getElementById('volume-bar');
-        const volumeLevel = document.getElementById('volume-level');
-
-        startButton.addEventListener('click', async () => {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            mediaRecorder = new MediaRecorder(stream);
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = audioContext.createAnalyser();
-            source = audioContext.createMediaStreamSource(stream);
-            source.connect(analyser);
-            analyser.fftSize = 256;
-            dataArray = new Uint8Array(analyser.frequencyBinCount);
-
-            mediaRecorder.ondataavailable = event => {
-                if (event.data.size > 0) {
-                    recordedChunks.push(event.data);
+            function toggleScript() {
+                var scriptContainer = document.getElementById('script-container');
+                if (scriptContainer.style.display === "none") {
+                    scriptContainer.style.display = "flex";
+                } else {
+                    scriptContainer.style.display = "none";
                 }
-            };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'audio/webm' });
-                const url = URL.createObjectURL(blob);
-                audioPlayback.src = url;
-            };
-
-            mediaRecorder.start();
-            startButton.disabled = true;
-            stopButton.disabled = false;
-            clearButton.disabled = false;
-            volumeBar.style.display = 'block';
-            visualizeVolume();
-        });
-
-        stopButton.addEventListener('click', () => {
-            mediaRecorder.stop();
-            startButton.disabled = false;
-            stopButton.disabled = true;
-        });
-
-        clearButton.addEventListener('click', () => {
-            recordedChunks = [];
-            audioPlayback.src = '';
-            clearButton.disabled = true;
-        });
-
-        function visualizeVolume() {
-            if (mediaRecorder && mediaRecorder.state === 'recording') {
-                requestAnimationFrame(visualizeVolume);
             }
-            analyser.getByteFrequencyData(dataArray);
-            let max = Math.max(...dataArray);
-            volumeLevel.style.width = (max / 255) * 100 + '%';
-        }
+
+            function copyCallNotes() {
+                var callNotes = document.getElementById("call-notes");
+                callNotes.select();
+                document.execCommand("copy");
+            }
+
+            function clearCallNotes() {
+                document.getElementById("call-notes").value = "";
+            }
+
+            // Recording functionality
+            let mediaRecorder;
+            let recordedChunks = [];
+            let audioContext;
+            let analyser;
+            let dataArray;
+            let source;
+
+            const startButton = document.getElementById('start-recording');
+            const stopButton = document.getElementById('stop-recording');
+            const clearButton = document.getElementById('clear-recording');
+            const audioPlayback = document.getElementById('audio-playback');
+            const volumeBar = document.getElementById('volume-bar');
+            const volumeLevel = document.getElementById('volume-level');
+
+            startButton.addEventListener('click', async () => {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                source = audioContext.createMediaStreamSource(stream);
+                source.connect(analyser);
+                analyser.fftSize = 256;
+                dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                mediaRecorder.ondataavailable = event => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+                    const url = URL.createObjectURL(blob);
+                    audioPlayback.src = url;
+                };
+
+                mediaRecorder.start();
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                clearButton.disabled = false;
+                volumeBar.style.display = 'block';
+                visualizeVolume();
+            });
+
+            stopButton.addEventListener('click', () => {
+                mediaRecorder.stop();
+                startButton.disabled = false;
+                stopButton.disabled = true;
+            });
+
+            clearButton.addEventListener('click', () => {
+                recordedChunks = [];
+                audioPlayback.src = '';
+                clearButton.disabled = true;
+            });
+
+            function visualizeVolume() {
+                if (mediaRecorder && mediaRecorder.state === 'recording') {
+                    requestAnimationFrame(visualizeVolume);
+                }
+                analyser.getByteFrequencyData(dataArray);
+                let max = Math.max(...dataArray);
+                volumeLevel.style.width = (max / 255) * 100 + '%';
+            }
+        });
     </script>
 </body>
 </html>
