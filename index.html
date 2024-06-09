@@ -503,6 +503,7 @@
         <button onclick="signUp()">Sign Up</button>
         <button onclick="signIn()">Sign In</button>
         <button onclick="signOut()">Sign Out</button>
+        <button onclick="linkIdentity()">Link Google Account</button>
     </div>
     <div id="chat-container" style="display:none;">
         <div id="messages"></div>
@@ -519,8 +520,10 @@
         async function signUp() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            console.log('Sign Up with', email);
             const { error } = await supabase.auth.signUp({ email, password });
             if (error) {
+                console.error('Error signing up:', error);
                 alert('Error signing up: ' + error.message);
             } else {
                 alert('Sign up successful!');
@@ -530,8 +533,10 @@
         async function signIn() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            console.log('Sign In with', email);
             const { error } = await supabase.auth.signIn({ email, password });
             if (error) {
+                console.error('Error signing in:', error);
                 alert('Error signing in: ' + error.message);
             } else {
                 document.getElementById('auth-container').style.display = 'none';
@@ -541,8 +546,10 @@
         }
 
         async function signOut() {
+            console.log('Sign Out');
             const { error } = await supabase.auth.signOut();
             if (error) {
+                console.error('Error signing out:', error);
                 alert('Error signing out: ' + error.message);
             } else {
                 document.getElementById('auth-container').style.display = 'block';
@@ -550,9 +557,22 @@
             }
         }
 
+        async function linkIdentity() {
+            console.log('Link Identity with Google');
+            const { data, error } = await supabase.auth.linkIdentity({ provider: 'google' });
+            if (error) {
+                console.error('Error linking identity:', error);
+                alert('Error linking identity: ' + error.message);
+            } else {
+                alert('Google account linked successfully!');
+            }
+        }
+
         async function loadMessages() {
+            console.log('Load Messages');
             const { data, error } = await supabase.from('messages').select('*');
             if (error) {
+                console.error('Error loading messages:', error);
                 alert('Error loading messages: ' + error.message);
             } else {
                 const messagesContainer = document.getElementById('messages');
@@ -575,8 +595,10 @@
 
         async function sendMessage() {
             const messageInput = document.getElementById('message-input').value;
+            console.log('Send Message:', messageInput);
             const { error } = await supabase.from('messages').insert([{ content: messageInput }]);
             if (error) {
+                console.error('Error sending message:', error);
                 alert('Error sending message: ' + error.message);
             } else {
                 document.getElementById('message-input').value = '';
