@@ -437,6 +437,7 @@
         <div class="record-container">
             <button class="record-button" id="start-recording">Start Recording</button>
             <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+            <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
             <audio id="audio-playback" controls></audio>
             <div id="volume-bar">
                 <div id="volume-level"></div>
@@ -516,6 +517,7 @@
 
         const startButton = document.getElementById('start-recording');
         const stopButton = document.getElementById('stop-recording');
+        const clearButton = document.getElementById('clear-recording');
         const audioPlayback = document.getElementById('audio-playback');
         const volumeBar = document.getElementById('volume-bar');
         const volumeLevel = document.getElementById('volume-level');
@@ -545,6 +547,7 @@
             mediaRecorder.start();
             startButton.disabled = true;
             stopButton.disabled = false;
+            clearButton.disabled = false;
             volumeBar.style.display = 'block';
             visualizeVolume();
         });
@@ -553,11 +556,16 @@
             mediaRecorder.stop();
             startButton.disabled = false;
             stopButton.disabled = true;
-            volumeBar.style.display = 'none';
+        });
+
+        clearButton.addEventListener('click', () => {
+            recordedChunks = [];
+            audioPlayback.src = '';
+            clearButton.disabled = true;
         });
 
         function visualizeVolume() {
-            if (mediaRecorder.state === 'recording') {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
                 requestAnimationFrame(visualizeVolume);
             }
             analyser.getByteFrequencyData(dataArray);
