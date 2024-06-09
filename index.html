@@ -4,48 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: silver;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            float: left;
-        }
-        nav ul li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        nav ul li a:hover {
-            background-color: #111;
-        }
-        .container {
-            padding: 20px;
-        }
-        .iframe-container {
-            display: none;
-        }
-        iframe {
-            width: 100%;
-            height: 80vh;
-            border: none;
-        }
         .question-box {
             border-radius: 15px;
             width: calc(33.333% - 25px);
@@ -81,6 +39,21 @@
         body.active-answer {
             overflow: hidden;
         }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            padding: 30px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            padding: 20px;
+        }
         .header {
             text-align: center;
             margin-bottom: 20px;
@@ -110,26 +83,88 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .controls-container {
+        .counter-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             position: fixed;
-            left: 10px;
-            top: calc(50px + 1in);
-            gap: 10px;
+            left: calc(10px + .5in); /* Move to the right */
+            top: 50%;
+            transform: translateY(-50%);
         }
-        .counter, .record-container, .call-notes-container {
-            background-color: silver;
+        .counter {
+            background-color: skyblue;
             color: black;
-            border: 1px solid #000;
+            border: 2px skyblue;
             border-radius: 10px;
             padding: 10px;
             text-align: center;
-            min-width: 200px;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        .counter-button, .record-button, .call-notes-container button {
+        .counter-button {
+            background-color: skyblue;
+            color: black;
+            border: 1px solid #000;
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+            transform: scale(1.02);
+        }
+        .toggle-button {
+            background-color: skyblue;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: fixed;
+            right: 10px;
+            top: 80px;
+        }
+        .record-container {
+            position: fixed;
+            left: calc(10px + .5in); /* Move to the right */
+            top: calc(50% + 2in);
+            background-color: silver;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            width: 13%; /* Reduce width by 35% */
+            min-width: 200px;
+            margin-top: 0.25in;
+        }
+        .record-button {
+            background-color: skyblue;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .call-notes-container {
+            position: fixed;
+            left: calc(10px + .5in); /* Move to the right */
+            top: calc(50% + 4in);
+            width: 13%; /* Reduce width by 35% */
+            min-width: 200px;
+            margin-top: 0.25in;
+        }
+        .call-notes-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: silver;
+            font-weight: bold;
+        }
+        .call-notes-container textarea {
+            width: 100%;
+            height: auto;
+            min-height: 100px;
+            resize: vertical;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: silver;
+            border: 1px solid #000;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .call-notes-container button {
             background-color: skyblue;
             border: none;
             padding: 10px;
@@ -150,40 +185,15 @@
             background-color: green;
             width: 0;
         }
-        #date-time {
-            position: fixed;
-            top: calc(20px + 1in);
-            left: 10px;
-            color: silver;
-            font-size: 16px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home" onclick="showContent('home')">Home</a></li>
-            <li><a href="#crm" onclick="showContent('crm')">CRM</a></li>
-        </ul>
-    </nav>
-    <div id="home" class="container">
+    <div class="container">
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
-            <h1>Nuvia ISR Command Center</h1>
+            <h1 style="color: silver;">Nuvia ISR Command Center</h1>
         </div>
-        <div id="date-time"></div>
-        <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
-        <div class="controls-container">
-            <div class="record-container">
-                <button class="record-button" id="start-recording">Start Recording</button>
-                <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
-                <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
-                <audio id="audio-playback" controls></audio>
-                <div id="volume-bar">
-                    <div id="volume-level"></div>
-                </div>
-            </div>
+        <div class="counter-container">
             <div class="counter">
                 <p>Answers</p>
                 <p id="answers-count">0</p>
@@ -198,13 +208,8 @@
                 <button class="counter-button" onclick="decrementCounter('sets-count')">Down</button>
                 <button class="counter-button" onclick="resetCounter('sets-count')">Reset</button>
             </div>
-            <div class="call-notes-container">
-                <label for="call-notes">Call Notes</label>
-                <textarea id="call-notes"></textarea>
-                <button onclick="copyCallNotes()">Copy</button>
-                <button onclick="clearCallNotes()">Clear</button>
-            </div>
         </div>
+        <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
         <div class="script-container" id="script-container">
             <div>
                 <h2>Script</h2>
@@ -429,21 +434,23 @@
                 <p>We don’t talk about clinical questions</p>
             </div>
         </div>
-    </div>
-    <div id="crm" class="container" style="background-color: black;">
-        <h1>CRM Section</h1>
-        <!-- Add your CRM content here -->
+        <div class="record-container">
+            <button class="record-button" id="start-recording">Start Recording</button>
+            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+            <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
+            <audio id="audio-playback" controls></audio>
+            <div id="volume-bar">
+                <div id="volume-level"></div>
+            </div>
+        </div>
+        <div class="call-notes-container">
+            <label for="call-notes">Call Notes</label>
+            <textarea id="call-notes"></textarea>
+            <button onclick="copyCallNotes()">Copy</button>
+            <button onclick="clearCallNotes()">Clear</button>
+        </div>
     </div>
     <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            document.getElementById('date-time').textContent = now.toLocaleDateString('en-US', options);
-        }
-
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-
         function toggleAnswer(id) {
             var answer = document.getElementById(id);
             var questionBox = document.querySelector(".question-box[onclick*='" + id + "']");
@@ -565,16 +572,6 @@
             let max = Math.max(...dataArray);
             volumeLevel.style.width = (max / 255) * 100 + '%';
         }
-
-        function showContent(section) {
-            document.querySelectorAll('.container').forEach(container => {
-                container.style.display = 'none';
-            });
-            document.getElementById(section).style.display = 'block';
-        }
-
-        // Display home content by default
-        showContent('home');
     </script>
 </body>
 </html>
