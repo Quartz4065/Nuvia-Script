@@ -4,6 +4,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
+        /* ... Your CSS styles ... */
+    </style>
+</head>
+<body>
+    <div &#8203;:citation[oaicite:0]{index=0}&#8203;
+
+
+
+
+reference this file to 
+ChatGPT
+
+Analysis paused
+
+errors
+File
+reference this file for the errors and correct them
+ChatGPT
+The content provided in the error log is still showing the beginning of an HTML file. Let's focus on ensuring the Supabase client is initialized correctly and handling any asynchronous operations properly.
+
+I'll provide a complete revised version of your HTML and JavaScript with added debugging statements and proper initialization of the Supabase client:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR Command Center</title>
+    <style>
         .question-box {
             border-radius: 15px;
             width: calc(33.333% - 25px);
@@ -88,7 +119,7 @@
             flex-direction: column;
             align-items: center;
             position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
+            left: calc(10px + .5in);
             top: 50%;
             transform: translateY(-50%);
         }
@@ -121,13 +152,13 @@
         }
         .record-container {
             position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
+            left: calc(10px + .5in);
             top: calc(50% + 2in);
             background-color: silver;
             padding: 10px;
             border: 1px solid #000;
             border-radius: 10px;
-            width: 13%; /* Reduce width by 35% */
+            width: 13%;
             min-width: 200px;
             margin-top: 0.25in;
         }
@@ -140,9 +171,9 @@
         }
         .call-notes-container {
             position: fixed;
-            left: calc(10px + .5in); /* Move to the right */
+            left: calc(10px + .5in);
             top: calc(50% + 4in);
-            width: 13%; /* Reduce width by 35% */
+            width: 13%;
             min-width: 200px;
             margin-top: 0.25in;
         }
@@ -518,6 +549,7 @@
         const supabaseUrl = 'https://pljzugtmeddspytwzjfk.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsanp1Z3RtZWRkc3B5dHd6amZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5MTgzOTYsImV4cCI6MjAzMzQ5NDM5Nn0.vLBiM-yVmqgH7hsRfeQ3k_0jgtGKyZ6WKsSDqCWSePw';
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        console.log('Supabase initialized');
 
         async function signUp() {
             const email = document.getElementById('email').value;
