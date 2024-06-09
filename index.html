@@ -84,7 +84,7 @@
             margin-bottom: 10px;
         }
         .counter-container {
-            display: absolute;
+            display: flex;
             flex-direction: column;
             align-items: center;
             position: fixed;
@@ -119,13 +119,34 @@
             right: 10px;
             top: 80px;
         }
-        .call-notes-container {
+        .record-container {
             position: fixed;
-            right: calc(10px - .5in);
-            top: calc(50% + 1in);
+            left: calc(10px + 2in);
+            top: calc(50% + 2in);
+            background-color: silver;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 10px;
             width: 20%;
             min-width: 300px;
             max-width: 400px;
+            margin-top: 0.25in;
+        }
+        .record-button {
+            background-color: skyblue;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .call-notes-container {
+            position: fixed;
+            left: calc(10px + 2in);
+            top: calc(50% + 4in);
+            width: 20%;
+            min-width: 300px;
+            max-width: 400px;
+            margin-top: 0.25in;
         }
         .call-notes-container label {
             display: block;
@@ -146,25 +167,6 @@
             font-family: Arial, sans-serif;
         }
         .call-notes-container button {
-            background-color: skyblue;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-        .record-container {
-            position: absolute;
-            right: calc(10px - .5in);
-            top: calc(50% - 3in);
-            background-color: silver;
-            padding: 10px;
-            border: 1px solid #000;
-            border-radius: 10px;
-            width: 20%;
-            min-width: 300px;
-            max-width: 400px;
-        }
-        .record-button {
             background-color: skyblue;
             border: none;
             padding: 10px;
