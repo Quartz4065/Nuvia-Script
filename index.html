@@ -193,7 +193,11 @@
             padding: 20px;
             border-radius: 10px;
             width: 300px;
-            margin: 20px auto;
+            margin: 20px;
+            position: fixed;
+            right: calc(10px + .5in);
+            top: 20%;
+            transform: translateY(-20%);
         }
         #chat-container {
             display: flex;
@@ -203,7 +207,11 @@
             padding: 20px;
             border-radius: 10px;
             width: 300px;
-            margin: 20px auto;
+            margin: 20px;
+            position: fixed;
+            right: calc(10px + .5in);
+            top: 50%;
+            transform: translateY(-50%);
         }
         #messages {
             width: 100%;
@@ -511,7 +519,7 @@
         async function signUp() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const { user, error } = await supabase.auth.signUp({ email, password });
+            const { error } = await supabase.auth.signUp({ email, password });
             if (error) {
                 alert('Error signing up: ' + error.message);
             } else {
@@ -522,7 +530,7 @@
         async function signIn() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const { user, error } = await supabase.auth.signIn({ email, password });
+            const { error } = await supabase.auth.signIn({ email, password });
             if (error) {
                 alert('Error signing in: ' + error.message);
             } else {
