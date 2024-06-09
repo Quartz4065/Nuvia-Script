@@ -171,6 +171,19 @@
             cursor: pointer;
             margin-right: 5px;
         }
+        #volume-bar {
+            width: 100%;
+            height: 20px;
+            background-color: gray;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        #volume-level {
+            height: 100%;
+            background-color: green;
+            width: 0;
+        }
     </style>
 </head>
 <body>
@@ -424,7 +437,9 @@
             <button class="record-button" id="start-recording">Start Recording</button>
             <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
             <audio id="audio-playback" controls></audio>
-            <button class="record-button" id="download-recording" disabled>Download Recording</button>
+            <div id="volume-bar">
+                <div id="volume-level"></div>
+            </div>
         </div>
         <div class="call-notes-container">
             <label for="call-notes">Call Notes</label>
@@ -493,16 +508,25 @@
         // Recording functionality
         let mediaRecorder;
         let recordedChunks = [];
+        let audioContext;
+        let analyser;
+        let dataArray;
+        let source;
 
         const startButton = document.getElementById('start-recording');
         const stopButton = document.getElementById('stop-recording');
         const audioPlayback = document.getElementById('audio-playback');
-        const downloadButton = document.getElementById('download-recording');
+        const volumeLevel = document.getElementById('volume-level');
 
         startButton.addEventListener('click', async () => {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder = new MediaRecorder(stream);
-            recordedChunks = [];
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            source = audioContext.createMediaStreamSource(stream);
+            source.connect(analyser);
+            analyser.fftSize = 256;
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
 
             mediaRecorder.ondataavailable = event => {
                 if (event.data.size > 0) {
@@ -514,14 +538,13 @@
                 const blob = new Blob(recordedChunks, { type: 'audio/webm' });
                 const url = URL.createObjectURL(blob);
                 audioPlayback.src = url;
-                downloadButton.href = url;
-                downloadButton.download = 'recording.webm';
-                downloadButton.disabled = false;
             };
 
             mediaRecorder.start();
             startButton.disabled = true;
             stopButton.disabled = false;
+
+            visualizeVolume();
         });
 
         stopButton.addEventListener('click', () => {
@@ -529,6 +552,13 @@
             startButton.disabled = false;
             stopButton.disabled = true;
         });
+
+        function visualizeVolume() {
+            requestAnimationFrame(visualizeVolume);
+            analyser.getByteFrequencyData(dataArray);
+            let max = Math.max(...dataArray);
+            volumeLevel.style.width = (max / 255) * 100 + '%';
+        }
     </script>
 </body>
 </html>
