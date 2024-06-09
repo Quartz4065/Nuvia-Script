@@ -422,7 +422,8 @@
             <div class="question-box" onclick="toggleAnswer('answer21')">Do you do Single Implants? - DO NOT PROVOKE</div>
             <div id="answer21" class="answer" onclick="toggleAnswer('answer21')">
                 <p>“Here at Nuvia we focus on full mouth restorations. That being said we can see how we can help you.” (redirect with clinical question)</p>
-                <p>If brought up again and patient states they only need single implants DO NOT SET</div>
+                <p>If brought up again and patient states they only need single implants DO NOT SET</p>
+            </div>
             <div class="question-box" onclick="toggleAnswer('answer22')">Addressing Medical Questions (Script)</div>
             <div id="answer22" class="answer" onclick="toggleAnswer('answer22')">
                 <p>“That’s a great question. We have treated many patients with various conditions and have learned it is very important for us to get a complete history of your situation. When you come in for your consultation we will review all of that information with you.”</p>
@@ -513,6 +514,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
+        // Initialize Supabase client
         const supabaseUrl = 'https://pljzugtmeddspytwzjfk.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsanp1Z3RtZWRkc3B5dHd6amZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5MTgzOTYsImV4cCI6MjAzMzQ5NDM5Nn0.vLBiM-yVmqgH7hsRfeQ3k_0jgtGKyZ6WKsSDqCWSePw';
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
@@ -521,12 +523,16 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             console.log('Sign Up with', email);
-            const { error } = await supabase.auth.signUp({ email, password });
-            if (error) {
+            try {
+                const { error } = await supabase.auth.signUp({ email, password });
+                if (error) {
+                    console.error('Error signing up:', error);
+                    alert('Error signing up: ' + error.message);
+                } else {
+                    alert('Sign up successful!');
+                }
+            } catch (error) {
                 console.error('Error signing up:', error);
-                alert('Error signing up: ' + error.message);
-            } else {
-                alert('Sign up successful!');
             }
         }
 
@@ -534,74 +540,94 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             console.log('Sign In with', email);
-            const { error } = await supabase.auth.signIn({ email, password });
-            if (error) {
+            try {
+                const { error } = await supabase.auth.signIn({ email, password });
+                if (error) {
+                    console.error('Error signing in:', error);
+                    alert('Error signing in: ' + error.message);
+                } else {
+                    document.getElementById('auth-container').style.display = 'none';
+                    document.getElementById('chat-container').style.display = 'block';
+                    loadMessages();
+                }
+            } catch (error) {
                 console.error('Error signing in:', error);
-                alert('Error signing in: ' + error.message);
-            } else {
-                document.getElementById('auth-container').style.display = 'none';
-                document.getElementById('chat-container').style.display = 'block';
-                loadMessages();
             }
         }
 
         async function signOut() {
             console.log('Sign Out');
-            const { error } = await supabase.auth.signOut();
-            if (error) {
+            try {
+                const { error } = await supabase.auth.signOut();
+                if (error) {
+                    console.error('Error signing out:', error);
+                    alert('Error signing out: ' + error.message);
+                } else {
+                    document.getElementById('auth-container').style.display = 'block';
+                    document.getElementById('chat-container').style.display = 'none';
+                }
+            } catch (error) {
                 console.error('Error signing out:', error);
-                alert('Error signing out: ' + error.message);
-            } else {
-                document.getElementById('auth-container').style.display = 'block';
-                document.getElementById('chat-container').style.display = 'none';
             }
         }
 
         async function linkIdentity() {
             console.log('Link Identity with Google');
-            const { data, error } = await supabase.auth.linkIdentity({ provider: 'google' });
-            if (error) {
+            try {
+                const { data, error } = await supabase.auth.linkIdentity({ provider: 'google' });
+                if (error) {
+                    console.error('Error linking identity:', error);
+                    alert('Error linking identity: ' + error.message);
+                } else {
+                    alert('Google account linked successfully!');
+                }
+            } catch (error) {
                 console.error('Error linking identity:', error);
-                alert('Error linking identity: ' + error.message);
-            } else {
-                alert('Google account linked successfully!');
             }
         }
 
         async function loadMessages() {
             console.log('Load Messages');
-            const { data, error } = await supabase.from('messages').select('*');
-            if (error) {
-                console.error('Error loading messages:', error);
-                alert('Error loading messages: ' + error.message);
-            } else {
-                const messagesContainer = document.getElementById('messages');
-                messagesContainer.innerHTML = '';
-                data.forEach(message => {
-                    const messageElement = document.createElement('div');
-                    messageElement.textContent = message.content;
-                    messagesContainer.appendChild(messageElement);
-                });
-                supabase
-                    .from('messages')
-                    .on('INSERT', payload => {
+            try {
+                const { data, error } = await supabase.from('messages').select('*');
+                if (error) {
+                    console.error('Error loading messages:', error);
+                    alert('Error loading messages: ' + error.message);
+                } else {
+                    const messagesContainer = document.getElementById('messages');
+                    messagesContainer.innerHTML = '';
+                    data.forEach(message => {
                         const messageElement = document.createElement('div');
-                        messageElement.textContent = payload.new.content;
-                        document.getElementById('messages').appendChild(messageElement);
-                    })
-                    .subscribe();
+                        messageElement.textContent = message.content;
+                        messagesContainer.appendChild(messageElement);
+                    });
+                    supabase
+                        .from('messages')
+                        .on('INSERT', payload => {
+                            const messageElement = document.createElement('div');
+                            messageElement.textContent = payload.new.content;
+                            document.getElementById('messages').appendChild(messageElement);
+                        })
+                        .subscribe();
+                }
+            } catch (error) {
+                console.error('Error loading messages:', error);
             }
         }
 
         async function sendMessage() {
             const messageInput = document.getElementById('message-input').value;
             console.log('Send Message:', messageInput);
-            const { error } = await supabase.from('messages').insert([{ content: messageInput }]);
-            if (error) {
+            try {
+                const { error } = await supabase.from('messages').insert([{ content: messageInput }]);
+                if (error) {
+                    console.error('Error sending message:', error);
+                    alert('Error sending message: ' + error.message);
+                } else {
+                    document.getElementById('message-input').value = '';
+                }
+            } catch (error) {
                 console.error('Error sending message:', error);
-                alert('Error sending message: ' + error.message);
-            } else {
-                document.getElementById('message-input').value = '';
             }
         }
 
