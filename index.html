@@ -193,6 +193,11 @@
             font-size: 16px;
             font-weight: bold;
         }
+        .calendar-container {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -457,6 +462,9 @@
             <textarea id="call-notes"></textarea>
             <button onclick="copyCallNotes()">Copy</button>
             <button onclick="clearCallNotes()">Clear</button>
+        </div>
+        <div class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=your_time_zone" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
     <script>
