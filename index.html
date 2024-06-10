@@ -5,48 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
-        .question-box {
-            border-radius: 15px;
-            width: calc(33.333% - 25px);
-            border: 1px solid #000;
-            padding: 15px;
-            margin: 10px;
-            cursor: pointer;
-            background-color: skyblue;
-            color: black;
-            font-weight: bold;
-            text-align: center;
-            display: inline-block;
-            box-sizing: border-box;
-            transform: scale(1.02);
+        :root {
+            --main-bg-color: black;
+            --main-text-color: white;
+            --secondary-bg-color: #333;
+            --highlight-color: #0077b6; /* Updated to match logo blue */
+            --active-color: yellow;
         }
-        .question-box.active {
-            background-color: silver;
+
+        [data-theme="dark"] {
+            --main-bg-color: #121212;
+            --main-text-color: #e0e0e0;
+            --secondary-bg-color: #333;
+            --highlight-color: #bb86fc;
+            --active-color: #3700b3;
         }
-        .answer {
-            font-weight: bold;
-            text-align: center;
-            display: none;
-            background-color: silver;
-            border: 1px solid #000;
-            padding: 10px;
-            z-index: 1000;
-            cursor: pointer;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        body.active-answer {
-            overflow: hidden;
-        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
+            background-color: var(--main-bg-color);
+            color: var(--main-text-color);
             padding: 30px;
             margin: 0;
             box-sizing: border-box;
         }
+
         .container {
             max-width: 1200px;
             margin: auto;
@@ -55,104 +38,166 @@
             position: relative;
             padding: 20px;
         }
+
         .header {
             text-align: center;
             margin-bottom: 20px;
             width: 100%;
         }
+
         .header img {
             max-width: 100%;
             height: auto;
         }
+
+        .question-box {
+            border-radius: 15px;
+            width: calc(33.333% - 25px);
+            border: 1px solid var(--main-text-color);
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: var(--highlight-color);
+            color: var(--main-text-color);
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            box-sizing: border-box;
+            transform: scale(1.02);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .question-box.active {
+            background-color: var(--active-color);
+        }
+
+        .answer {
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--main-text-color);
+            padding: 10px;
+            z-index: 1000;
+            cursor: pointer;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body.active-answer {
+            overflow: hidden;
+        }
+
         .script-container {
             width: 100%;
             height: 50vh;
-            background-color: silver;
+            background-color: var(--secondary-bg-color);
             padding: 20px;
             overflow-y: auto;
             display: none;
             flex-direction: row;
             box-sizing: border-box;
         }
+
         .questions-container {
             width: 100%;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .answer-title {
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         .counter-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             position: fixed;
-            left: calc(10px + .5in); 
-            top: 50%;
-            transform: translateY(-50%);
+            left: 10px;
+            bottom: 50px;
+            width: 300px;
         }
+
         .counter {
-            background-color: skyblue;
-            color: black;
-            border: 2px skyblue;
+            background-color: var(--highlight-color);
+            color: var(--main-text-color);
+            border: 2px solid var(--highlight-color);
             border-radius: 10px;
             padding: 10px;
             text-align: center;
             margin-bottom: 10px;
         }
+
         .counter-button {
-            background-color: skyblue;
-            color: black;
-            border: 1px solid #000;
+            background-color: var(--highlight-color);
+            color: var(--main-text-color);
+            border: 1px solid var(--main-text-color);
             padding: 5px 10px;
             margin: 2px;
             cursor: pointer;
             transform: scale(1.02);
+            transition: background-color 0.3s, transform 0.3s;
         }
+
+        .counter-button:active {
+            background-color: var(--active-color);
+        }
+
         .toggle-button {
-            background-color: skyblue;
+            background-color: var(--highlight-color);
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             position: fixed;
             right: 10px;
             top: 80px;
+            color: var(--main-text-color);
+            transition: background-color 0.3s, transform 0.3s;
         }
+
         .record-container {
             position: fixed;
-            left: calc(10px + .5in); 
-            top: calc(50% + 2in);
-            background-color: silver;
+            left: 10px;
+            bottom: calc(50% - 2.5in);
+            background-color: var(--secondary-bg-color);
             padding: 10px;
-            border: 1px solid #000;
+            border: 1px solid var(--main-text-color);
             border-radius: 10px;
-            width: 13%; 
-            min-width: 200px;
-            margin-top: 0.25in;
+            width: 300px;
         }
+
         .record-button {
-            background-color: skyblue;
+            background-color: var(--highlight-color);
             border: none;
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
+            transition: background-color 0.3s, transform 0.3s;
         }
+
+        .record-button:active {
+            background-color: var(--active-color);
+        }
+
         .call-notes-container {
             position: fixed;
-            left: calc(10px + .5in); 
-            top: calc(50% + 4in);
-            width: 13%; 
-            min-width: 200px;
-            margin-top: 0.25in;
+            left: 10px;
+            top: 3in;
+            width: 300px;
         }
+
         .call-notes-container label {
             display: block;
             margin-bottom: 5px;
-            color: silver;
+            color: var(--main-text-color);
             font-weight: bold;
         }
+
         .call-notes-container textarea {
             width: 100%;
             height: auto;
@@ -160,18 +205,21 @@
             resize: vertical;
             box-sizing: border-box;
             padding: 10px;
-            background-color: silver;
-            border: 1px solid #000;
-            color: black;
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--main-text-color);
+            color: var(--main-text-color);
             font-family: Arial, sans-serif;
         }
+
         .call-notes-container button {
-            background-color: skyblue;
+            background-color: var(--highlight-color);
             border: none;
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
+            transition: background-color 0.3s, transform 0.3s;
         }
+
         #volume-bar {
             width: 100%;
             height: 20px;
@@ -181,18 +229,45 @@
             overflow: hidden;
             display: none;
         }
+
         #volume-level {
             height: 100%;
             background-color: green;
             width: 0;
         }
+
+        #datetime {
+            position: fixed;
+            top: 1in;
+            left: 0.5in;
+            color: var(--main-text-color);
+            font-size: 25px;
+            background-color: var(--main-bg-color);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .call-notes-container, .counter-container, .record-container {
+                position: static;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
-<body>
+<body data-theme="light">
+    <div id="datetime"></div>
     <div class="container">
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
             <h1 style="color: silver;">Nuvia ISR Command Center</h1>
+        </div>
+        <div class="call-notes-container">
+            <label for="call-notes">Call Notes</label>
+            <textarea id="call-notes"></textarea>
+            <button onclick="copyCallNotes()">Copy</button>
+            <button onclick="clearCallNotes()">Clear</button>
         </div>
         <div class="counter-container">
             <div class="counter">
@@ -211,6 +286,7 @@
             </div>
         </div>
         <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
+        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
         <div class="script-container" id="script-container">
             <div>
                 <h2>Script</h2>
@@ -378,7 +454,8 @@
             <div class="question-box" onclick="toggleAnswer('answer21')">Do you do Single Implants? - DO NOT PROVOKE</div>
             <div id="answer21" class="answer" onclick="toggleAnswer('answer21')">
                 <p>“Here at Nuvia we focus on full mouth restorations. That being said we can see how we can help you.” (redirect with clinical question)</p>
-                <p>If brought up again and patient states they only need single implants DO NOT SET</div>
+                <p>If brought up again and patient states they only need single implants DO NOT SET</p>
+            </div>
             <div class="question-box" onclick="toggleAnswer('answer22')">Addressing Medical Questions (Script)</div>
             <div id="answer22" class="answer" onclick="toggleAnswer('answer22')">
                 <p>“That’s a great question. We have treated many patients with various conditions and have learned it is very important for us to get a complete history of your situation. When you come in for your consultation we will review all of that information with you.”</p>
@@ -438,17 +515,13 @@
         <div class="record-container">
             <button class="record-button" id="start-recording">Start Recording</button>
             <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+            <button class="record-button" id="save-recording" disabled>Save Recording</button>
+            <button class="record-button" id="load-recording">Load Recording</button>
             <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
             <audio id="audio-playback" controls></audio>
             <div id="volume-bar">
                 <div id="volume-level"></div>
             </div>
-        </div>
-        <div class="call-notes-container">
-            <label for="call-notes">Call Notes</label>
-            <textarea id="call-notes"></textarea>
-            <button onclick="copyCallNotes()">Copy</button>
-            <button onclick="clearCallNotes()">Clear</button>
         </div>
     </div>
     <script>
@@ -508,7 +581,25 @@
             document.getElementById("call-notes").value = "";
         }
 
-        // Recording functionality
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const timeString = now.toLocaleTimeString();
+            const dateString = now.toLocaleDateString(undefined, options);
+            document.getElementById('datetime').innerText = `${dateString} ${timeString}`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        function toggleDarkMode() {
+            const body = document.body;
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+            } else {
+                body.dataset.theme = 'dark';
+            }
+        }
+
         let mediaRecorder;
         let recordedChunks = [];
         let audioContext;
@@ -518,6 +609,8 @@
 
         const startButton = document.getElementById('start-recording');
         const stopButton = document.getElementById('stop-recording');
+        const saveButton = document.getElementById('save-recording');
+        const loadButton = document.getElementById('load-recording');
         const clearButton = document.getElementById('clear-recording');
         const audioPlayback = document.getElementById('audio-playback');
         const volumeBar = document.getElementById('volume-bar');
@@ -543,6 +636,7 @@
                 const blob = new Blob(recordedChunks, { type: 'audio/webm' });
                 const url = URL.createObjectURL(blob);
                 audioPlayback.src = url;
+                saveButton.disabled = false;
             };
 
             mediaRecorder.start();
@@ -557,6 +651,31 @@
             mediaRecorder.stop();
             startButton.disabled = false;
             stopButton.disabled = true;
+        });
+
+        saveButton.addEventListener('click', () => {
+            const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'recording.webm';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        loadButton.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'audio/*';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const url = URL.createObjectURL(file);
+                audioPlayback.src = url;
+                audioPlayback.play();
+            };
+            input.click();
         });
 
         clearButton.addEventListener('click', () => {
