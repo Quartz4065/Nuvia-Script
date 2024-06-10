@@ -7,62 +7,57 @@
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2487.6">
   <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #519ce9}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #d65562}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #9ba2b1}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #9ba2b1; min-height: 16.0px}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #4a505d}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #88b966}
+    span.s1 {color: #9ba2b1}
+    span.s2 {color: #d65562}
+    span.s3 {color: #c58853}
+    span.s4 {color: #88b966}
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;Live Chat&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Live Chat&lt;/h1&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Registration Form --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="register-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Register&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="register-form"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="email" id="register-email" placeholder="Email" required /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="password" id="register-password" placeholder="Password" required /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="submit"&gt;Register&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Login Form --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="login-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Login&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="login-form"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="email" id="login-email" placeholder="Email" required /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="password" id="login-password" placeholder="Password" required /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="submit"&gt;Login&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Chat Interface --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="chat-container" style="display: none;"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Chat&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="chat-messages"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="chat-input" placeholder="Type a message" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="chat-send"&gt;Send&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="bundle.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Chat Interface --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="chat-container" style="display: none;"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Chat&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="chat-messages"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="chat-input" placeholder="Type a message" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="chat-send"&gt;Send&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="bundle.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p2"><span class="s1">&lt;</span>html<span class="s1">&gt;</span></p>
+<p class="p2"><span class="s1">&lt;</span>head<span class="s1">&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;<span class="s2">title</span>&gt;Live Chat&lt;/<span class="s2">title</span>&gt;</p>
+<p class="p2"><span class="s1">&lt;/</span>head<span class="s1">&gt;</span></p>
+<p class="p2"><span class="s1">&lt;</span>body<span class="s1">&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;<span class="s2">h1</span>&gt;Live Chat&lt;/<span class="s2">h1</span>&gt;</p>
+<p class="p4"><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">  </span></span>&lt;!-- Registration Form --&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">  </span>&lt;</span><span class="s2">div</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"register-container"<span class="s1">&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s2">h2</span>&gt;Register&lt;/<span class="s2">h2</span>&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span>&lt;</span><span class="s2">form</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"register-form"<span class="s1">&gt;</span></p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">      </span>&lt;</span><span class="s2">input</span><span class="s1"> </span><span class="s3">type</span><span class="s1">=</span>"email"<span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"register-email"<span class="s1"> </span><span class="s3">placeholder</span><span class="s1">=</span>"Email"<span class="s1"> </span><span class="s3">required</span><span class="s1"> /&gt;</span></p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">      </span>&lt;</span><span class="s2">input</span><span class="s1"> </span><span class="s3">type</span><span class="s1">=</span>"password"<span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"register-password"<span class="s1"> </span><span class="s3">placeholder</span><span class="s1">=</span>"Password"<span class="s1"> </span><span class="s3">required</span><span class="s1"> /&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s2">button</span> <span class="s3">type</span>=<span class="s4">"submit"</span>&gt;Register&lt;/<span class="s2">button</span>&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/<span class="s2">form</span>&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/<span class="s2">div</span>&gt;</p>
+<p class="p4"><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">  </span></span>&lt;!-- Login Form --&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">  </span>&lt;</span><span class="s2">div</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"login-container"<span class="s1">&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s2">h2</span>&gt;Login&lt;/<span class="s2">h2</span>&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span>&lt;</span><span class="s2">form</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"login-form"<span class="s1">&gt;</span></p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">      </span>&lt;</span><span class="s2">input</span><span class="s1"> </span><span class="s3">type</span><span class="s1">=</span>"email"<span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"login-email"<span class="s1"> </span><span class="s3">placeholder</span><span class="s1">=</span>"Email"<span class="s1"> </span><span class="s3">required</span><span class="s1"> /&gt;</span></p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">      </span>&lt;</span><span class="s2">input</span><span class="s1"> </span><span class="s3">type</span><span class="s1">=</span>"password"<span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"login-password"<span class="s1"> </span><span class="s3">placeholder</span><span class="s1">=</span>"Password"<span class="s1"> </span><span class="s3">required</span><span class="s1"> /&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s2">button</span> <span class="s3">type</span>=<span class="s4">"submit"</span>&gt;Login&lt;/<span class="s2">button</span>&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/<span class="s2">form</span>&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/<span class="s2">div</span>&gt;</p>
+<p class="p4"><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">  </span></span>&lt;!-- Chat Interface --&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">  </span>&lt;</span><span class="s2">div</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"chat-container"<span class="s1"> </span><span class="s3">style</span><span class="s1">=</span>"display: none;"<span class="s1">&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s2">h2</span>&gt;Chat&lt;/<span class="s2">h2</span>&gt;</p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span>&lt;</span><span class="s2">div</span><span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"chat-messages"<span class="s1">&gt;&lt;/</span><span class="s2">div</span><span class="s1">&gt;</span></p>
+<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span>&lt;</span><span class="s2">input</span><span class="s1"> </span><span class="s3">type</span><span class="s1">=</span>"text"<span class="s1"> </span><span class="s3">id</span><span class="s1">=</span>"chat-input"<span class="s1"> </span><span class="s3">placeholder</span><span class="s1">=</span>"Type a message"<span class="s1"> /&gt;</span></p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s2">button</span> <span class="s3">id</span>=<span class="s4">"chat-send"</span>&gt;Send&lt;/<span class="s2">button</span>&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/<span class="s2">div</span>&gt;</p>
+<p class="p4"><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;</span>script<span class="s1"> </span><span class="s3">src</span><span class="s1">=</span><span class="s4">"bundle.js"</span><span class="s1">&gt;&lt;/</span>script<span class="s1">&gt;</span></p>
+<p class="p2"><span class="s1">&lt;/</span>body<span class="s1">&gt;</span></p>
+<p class="p2"><span class="s1">&lt;/</span>html<span class="s1">&gt;</span></p>
 </body>
 </html>
