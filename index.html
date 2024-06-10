@@ -6,43 +6,44 @@
     <title>ISR Command Center</title>
     <style>
         :root {
-            --main-bg-color: black;
-            --main-text-color: white;
-            --secondary-bg-color: #333;
-            --highlight-color: #0077b6; /* Updated to match logo blue */
-            --active-color: yellow;
-        }
-
-        [data-theme="dark"] {
-            --main-bg-color: #121212;
-            --main-text-color: #e0e0e0;
-            --secondary-bg-color: #333;
-            --highlight-color: #bb86fc;
-            --active-color: #3700b3;
+            --main-bg-color: #f0f0f0;
+            --main-text-color: #333;
+            --secondary-bg-color: #fff;
+            --highlight-color: #0077b6;
+            --active-color: #ffd700;
+            --dark-bg-color: #121212;
+            --dark-text-color: #e0e0e0;
+            --dark-secondary-bg-color: #333;
+            --dark-highlight-color: #bb86fc;
+            --dark-active-color: #3700b3;
         }
 
         body {
             font-family: Arial, sans-serif;
             background-color: var(--main-bg-color);
             color: var(--main-text-color);
-            padding: 30px;
             margin: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        [data-theme="dark"] {
+            --main-bg-color: var(--dark-bg-color);
+            --main-text-color: var(--dark-text-color);
+            --secondary-bg-color: var(--dark-secondary-bg-color);
+            --highlight-color: var(--dark-highlight-color);
+            --active-color: var(--dark-active-color);
         }
 
         .container {
             max-width: 1200px;
             margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
             padding: 20px;
         }
 
         .header {
             text-align: center;
             margin-bottom: 20px;
-            width: 100%;
         }
 
         .header img {
@@ -50,9 +51,56 @@
             height: auto;
         }
 
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--highlight-color);
+            color: var(--main-text-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--main-text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .breadcrumbs {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: var(--secondary-bg-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .breadcrumbs a {
+            color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        .breadcrumbs span {
+            margin: 0 5px;
+            color: var(--main-text-color);
+        }
+
         .question-box {
             border-radius: 15px;
-            width: calc(33.333% - 25px);
+            width: calc(33.333% - 20px);
             border: 1px solid var(--main-text-color);
             padding: 15px;
             margin: 10px;
@@ -84,6 +132,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         body.active-answer {
@@ -97,8 +146,8 @@
             padding: 20px;
             overflow-y: auto;
             display: none;
-            flex-direction: row;
             box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .questions-container {
@@ -121,6 +170,10 @@
             left: 10px;
             bottom: 50px;
             width: 300px;
+            background-color: var(--secondary-bg-color);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .counter {
@@ -158,6 +211,7 @@
             top: 80px;
             color: var(--main-text-color);
             transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
         }
 
         .record-container {
@@ -169,6 +223,7 @@
             border: 1px solid var(--main-text-color);
             border-radius: 10px;
             width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .record-button {
@@ -189,6 +244,10 @@
             left: 10px;
             top: 3in;
             width: 300px;
+            background-color: var(--secondary-bg-color);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .call-notes-container label {
@@ -245,6 +304,7 @@
             background-color: var(--main-bg-color);
             padding: 5px;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
@@ -253,17 +313,48 @@
                 width: 100%;
                 margin-bottom: 10px;
             }
+
+            .question-box {
+                width: calc(50% - 20px);
+            }
+
+            .toggle-button {
+                top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .question-box {
+                width: 100%;
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
 <body data-theme="light">
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#script">Script</a></li>
+            <li><a href="#questions">Questions</a></li>
+            <li><a href="#record">Record</a></li>
+            <li><a href="#call-notes">Call Notes</a></li>
+        </ul>
+    </nav>
     <div id="datetime"></div>
-    <div class="container">
+    <div class="breadcrumbs">
+        <a href="#home">Home</a> <span>/</span>
+        <a href="#script">Script</a> <span>/</span>
+        <a href="#questions">Questions</a> <span>/</span>
+        <a href="#record">Record</a> <span>/</span>
+        <a href="#call-notes">Call Notes</a>
+    </div>
+    <div class="container" id="home">
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
-            <h1 style="color: silver;">Nuvia ISR Command Center</h1>
+            <h1 style="color: var(--highlight-color);">Nuvia ISR Command Center</h1>
         </div>
-        <div class="call-notes-container">
+        <div class="call-notes-container" id="call-notes">
             <label for="call-notes">Call Notes</label>
             <textarea id="call-notes"></textarea>
             <button onclick="copyCallNotes()">Copy</button>
@@ -288,7 +379,7 @@
         <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
         <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
         <div class="script-container" id="script-container">
-            <div>
+            <div id="script">
                 <h2>Script</h2>
                 <p>Hi LEAD NAME this is NAME with Nuvia Dental Implant Center. I saw that you filled out one of our forms inquiring about dental implants so I’m calling to get a better understanding of your situation and what you’ve been going through. Can you tell me a little bit more about your situation?</p>
                 <h3>Clinical Discovery</h3>
@@ -347,7 +438,7 @@
                 <p>“Oh hey! ……Last thing……. the doctor does ask that if you have a spouse or significant other that they attend the consultation with you so we do offer a $100 gift card for bringing them with you to this appointment. Who should we put in the notes that will be coming with you on __________?”</p>
             </div>
         </div>
-        <div class="questions-container">
+        <div class="questions-container" id="questions">
             <div class="question-box" onclick="toggleAnswer('answer1')">Deposit Objection - Clarify</div>
             <div id="answer1" class="answer" onclick="toggleAnswer('answer1')">
                 <p>“So you’re not paying for the consultation. The voucher will cover the cost for you. The $89 is just to hold your spot on the calendar to ensure everyone shows for their appointment and we can do that with a debit or credit card whatever works best for you.”</p>
@@ -454,8 +545,7 @@
             <div class="question-box" onclick="toggleAnswer('answer21')">Do you do Single Implants? - DO NOT PROVOKE</div>
             <div id="answer21" class="answer" onclick="toggleAnswer('answer21')">
                 <p>“Here at Nuvia we focus on full mouth restorations. That being said we can see how we can help you.” (redirect with clinical question)</p>
-                <p>If brought up again and patient states they only need single implants DO NOT SET</p>
-            </div>
+                <p>If brought up again and patient states they only need single implants DO NOT SET</div>
             <div class="question-box" onclick="toggleAnswer('answer22')">Addressing Medical Questions (Script)</div>
             <div id="answer22" class="answer" onclick="toggleAnswer('answer22')">
                 <p>“That’s a great question. We have treated many patients with various conditions and have learned it is very important for us to get a complete history of your situation. When you come in for your consultation we will review all of that information with you.”</p>
@@ -512,7 +602,7 @@
                 <p>We don’t talk about clinical questions</p>
             </div>
         </div>
-        <div class="record-container">
+        <div class="record-container" id="record">
             <button class="record-button" id="start-recording">Start Recording</button>
             <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
             <button class="record-button" id="save-recording" disabled>Save Recording</button>
@@ -565,7 +655,7 @@
         function toggleScript() {
             var scriptContainer = document.getElementById('script-container');
             if (scriptContainer.style.display === "none" || scriptContainer.style.display === "") {
-                scriptContainer.style.display = "flex";
+                scriptContainer.style.display = "block";
             } else {
                 scriptContainer.style.display = "none";
             }
