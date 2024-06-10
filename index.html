@@ -102,37 +102,12 @@
             background-color: #2c2c2c;
             padding: 20px;
             box-sizing: border-box;
+            display: none;
+            flex-direction: column;
         }
 
         .script-section {
             margin-bottom: 10px;
-        }
-
-        .script-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-            position: sticky;
-            top: 0;
-            background-color: #2c2c2c;
-            z-index: 1;
-            padding-top: 10px;
-        }
-
-        .script-button {
-            background-color: #1e1e1e;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            color: #e0e0e0;
-            margin: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .script-button:hover {
-            background-color: #006ed2;
-            transform: scale(1.05);
         }
 
         .accordion {
@@ -354,17 +329,6 @@
         </div>
         <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
         <div class="script-container" id="script-container">
-            <div class="script-buttons">
-                <button class="script-button" onclick="scrollToSection('intro')">Intro</button>
-                <button class="script-button" onclick="scrollToSection('clinical')">Clinical Discovery</button>
-                <button class="script-button" onclick="scrollToSection('pain')">Pain Points</button>
-                <button class="script-button" onclick="scrollToSection('chewing')">Chewing/Diet</button>
-                <button class="script-button" onclick="scrollToSection('confidence')">Confidence</button>
-                <button class="script-button" onclick="scrollToSection('scheduling')">Scheduling</button>
-                <button class="script-button" onclick="scrollToSection('deposit')">Deposit and Close</button>
-                <button class="script-button" onclick="scrollToSection('voucher')">Voucher</button>
-                <button class="script-button" onclick="scrollToSection('spoucher')">Spoucher</button>
-            </div>
             <div class="script-section">
                 <button class="accordion">Intro</button>
                 <div class="panel">
@@ -673,7 +637,7 @@
 
         function toggleScript() {
             var scriptContainer = document.getElementById('script-container');
-            if (scriptContainer.style.display === "none") {
+            if (scriptContainer.style.display === "none" || scriptContainer.style.display === "") {
                 scriptContainer.style.display = "flex";
             } else {
                 scriptContainer.style.display = "none";
