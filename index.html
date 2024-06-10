@@ -564,7 +564,7 @@
 
         function toggleScript() {
             var scriptContainer = document.getElementById('script-container');
-            if (scriptContainer.style.display === "none") {
+            if (scriptContainer.style.display === "none" || scriptContainer.style.display === "") {
                 scriptContainer.style.display = "flex";
             } else {
                 scriptContainer.style.display = "none";
