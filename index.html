@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
-        /* Your existing styles */
         .question-box {
             border-radius: 15px;
             width: calc(33.333% - 25px);
@@ -185,18 +184,6 @@
             height: 100%;
             background-color: green;
             width: 0;
-        }
-        .chat-container {
-            position: fixed;
-            right: calc(10px + .5in); /* Move to the left */
-            top: calc(50% + 2in);
-            background-color: silver;
-            padding: 10px;
-            border: 1px solid #000;
-            border-radius: 10px;
-            width: 13%; /* Reduce width by 35% */
-            min-width: 200px;
-            margin-top: 0.25in;
         }
     </style>
 </head>
@@ -463,21 +450,6 @@
             <button onclick="clearCallNotes()">Clear</button>
         </div>
     </div>
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/66664177981b6c56477b641b/1hvvmvf3u';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
-
     <script>
         function toggleAnswer(id) {
             var answer = document.getElementById(id);
