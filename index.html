@@ -89,9 +89,9 @@
             flex-direction: column;
             align-items: center;
             position: fixed;
-            left: calc(10px + .5in); 
-            top: 50%;
-            transform: translateY(-50%);
+            left: 10px;
+            bottom: 50px;
+            width: 200px;
         }
         .counter {
             background-color: skyblue;
@@ -125,15 +125,13 @@
         }
         .record-container {
             position: fixed;
-            left: calc(10px + .5in); 
-            top: calc(50% + 2in);
+            left: 10px;
+            bottom: calc(50% - 2.5in);
             background-color: silver;
             padding: 10px;
             border: 1px solid #000;
             border-radius: 10px;
-            width: 13%; 
-            min-width: 200px;
-            margin-top: 0.25in;
+            width: 200px;
         }
         .record-button {
             background-color: skyblue;
@@ -147,11 +145,9 @@
         }
         .call-notes-container {
             position: fixed;
-            left: calc(10px + .5in); 
-            top: calc(50% + 4in);
-            width: 13%; 
-            min-width: 200px;
-            margin-top: 0.25in;
+            left: 10px;
+            top: 10px;
+            width: 200px;
         }
         .call-notes-container label {
             display: block;
@@ -202,6 +198,13 @@
             padding: 5px;
             border-radius: 5px;
         }
+        @media (max-width: 768px) {
+            .call-notes-container, .counter-container, .record-container {
+                position: static;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,6 +213,12 @@
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
             <h1 style="color: silver;">Nuvia ISR Command Center</h1>
+        </div>
+        <div class="call-notes-container">
+            <label for="call-notes">Call Notes</label>
+            <textarea id="call-notes"></textarea>
+            <button onclick="copyCallNotes()">Copy</button>
+            <button onclick="clearCallNotes()">Clear</button>
         </div>
         <div class="counter-container">
             <div class="counter">
@@ -462,12 +471,6 @@
             <div id="volume-bar">
                 <div id="volume-level"></div>
             </div>
-        </div>
-        <div class="call-notes-container">
-            <label for="call-notes">Call Notes</label>
-            <textarea id="call-notes"></textarea>
-            <button onclick="copyCallNotes()">Copy</button>
-            <button onclick="clearCallNotes()">Clear</button>
         </div>
     </div>
     <script>
