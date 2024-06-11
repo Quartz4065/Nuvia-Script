@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .call-notes-container, .counter-container, .record-container, .script-container {
-                width: 100%;
-                margin-bottom: 10px;
-                position: static;
-            }
-            .toggle-button {
-                position: static;
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            .questions-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
         /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -31,7 +13,7 @@
             padding: 30px;
             margin: 0;
             box-sizing: border-box;
-            line-height: 1.6; /* Improved readability */
+            line-height: 1.6;
         }
 
         .container {
@@ -39,7 +21,6 @@
             margin: auto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             position: relative;
             padding: 20px;
         }
@@ -55,7 +36,6 @@
             height: auto;
         }
 
-        /* Enhanced Aesthetics */
         h1, h2, h3, h4, h5, h6 {
             color: #f1f1f1;
             margin-bottom: 10px;
@@ -72,7 +52,7 @@
             width: 100%;
             border: 1px solid #444;
             padding: 15px;
-            margin: 5px; /* Reduced margin */
+            margin: 5px;
             cursor: pointer;
             background-color: #1e1e1e;
             color: #e0e0e0;
@@ -149,14 +129,9 @@
             margin-bottom: 10px;
         }
 
-        .counter-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: fixed;
-            left: 10px;
-            bottom: 50px;
-            width: 300px;
+        .counter-container, .record-container, .call-notes-container {
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         .counter {
@@ -189,9 +164,6 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            position: fixed;
-            right: 10px;
-            top: 80px;
             color: #e0e0e0;
             font-size: 16px;
             border-radius: 5px;
@@ -201,42 +173,6 @@
         .toggle-button:hover {
             background-color: #2e7d32;
             transform: scale(1.05);
-        }
-
-        .record-container {
-            position: fixed;
-            left: 10px;
-            bottom: calc(50% - 2.5in);
-            background-color: #2c2c2c;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 10px;
-            width: 300px;
-        }
-
-        .record-button {
-            background-color: #1e1e1e;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin-right: 5px;
-            color: #e0e0e0;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .record-button:active {
-            background-color: #2e7d32;
-        }
-
-        .record-button:hover {
-            transform: scale(1.05);
-        }
-
-        .call-notes-container {
-            position: fixed;
-            left: 10px;
-            top: 3in;
-            width: 300px;
         }
 
         .call-notes-container label {
@@ -291,8 +227,8 @@
 
         #datetime {
             position: fixed;
-            top: 1in;
-            left: 0.5in;
+            top: 10px;
+            left: 10px;
             color: white;
             font-size: 25px;
             background-color: #333;
@@ -300,39 +236,18 @@
             border-radius: 5px;
         }
 
-        /* Animation */
         .question-box:hover {
             transform: scale(1.05);
             background-color: #006ed2;
         }
 
-        /* Color Coding for Groups */
-        .group-deposit {
-            background-color: #333;
-        }
-        .group-callback {
-            background-color: #444;
-        }
-        .group-cost {
-            background-color: #555;
-        }
-        .group-location {
-            background-color: #666;
-        }
-        .group-medical {
-            background-color: #777;
-        }
-        .group-general {
-            background-color: #888;
-        }
-
-        /* Group Container Styles */
         .group-container {
             display: flex;
             flex-direction: column;
             margin: 0 10px;
             padding: 10px;
             border-radius: 5px;
+            width: 100%;
         }
 
         .questions-container {
@@ -349,23 +264,34 @@
             font-weight: bold;
         }
 
-        .group-deposit .group-header {
-            color: #f70000;
-        }
-        .group-callback .group-header {
-            color: #66b2ff;
-        }
-        .group-cost .group-header {
-            color: #ffcc66;
-        }
-        .group-location .group-header {
-            color: #66ff66;
-        }
-        .group-medical .group-header {
-            color: #00008B; /* Changed to dark blue */
-        }
-        .group-general .group-header {
-            color: #00cdac;
+        .group-deposit .group-header { color: #f70000; }
+        .group-callback .group-header { color: #66b2ff; }
+        .group-cost .group-header { color: #ffcc66; }
+        .group-location .group-header { color: #66ff66; }
+        .group-medical .group-header { color: #00008B; }
+        .group-general .group-header { color: #00cdac; }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .counter-container, .record-container, .call-notes-container {
+                position: static;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .questions-container {
+                flex-direction: column;
+            }
+
+            .toggle-button {
+                position: static;
+                margin-bottom: 10px;
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
@@ -494,7 +420,6 @@
             </div>
         </div>
         <div class="questions-container">
-            <!-- Group 1: Deposits -->
             <div class="group-container group-deposit">
                 <div class="group-header">Deposits</div>
                 <div class="question-box" onclick="toggleAnswer('answer1')">Deposit Objection - Clarify</div>
@@ -519,7 +444,6 @@
                     <p>“Okay no worries I’m just putting in some notes so you can run and grab that take your time.”</p>
                 </div>
             </div>
-            <!-- Group 2: Callbacks -->
             <div class="group-container group-callback">
                 <div class="group-header">Callbacks</div>
                 <div class="question-box" onclick="toggleAnswer('answer6')">Call Back - Beginning of the call/Busy (Pre Discovery)</div>
@@ -561,7 +485,6 @@
                     <p>“Hey I know that arranging calendars can be difficult. You mentioned how much this is affecting your life so I want to reserve this voucher for you and I can do that by just putting you on the calendar and if an emergency comes up we are happy to accommodate. So let’s just get you on the calendar and if anything changes we can adjust.”</p>
                 </div>
             </div>
-            <!-- Group 3: Cost -->
             <div class="group-container group-cost">
                 <div class="group-header">Cost</div>
                 <div class="question-box" onclick="toggleAnswer('answer13')">Beginning of the Call Cost Script</div>
@@ -584,7 +507,6 @@
                     <p>“May I ask what’s holding you back from coming into a complimentary consultation to get the answers you are looking for?” (redirect back to flow)</p>
                 </div>
             </div>
-            <!-- Group 4: Location -->
             <div class="group-container group-location">
                 <div class="group-header">Location</div>
                 <div class="question-box" onclick="toggleAnswer('answer17')">Where are you located?</div>
@@ -602,7 +524,6 @@
                     <p>“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. At other implant centers you typically get a temporary denture the day of surgery which are bulky hard to talk with and breaks up to 40% of the time. It’s 100% worth the trip. For patients that live too far to travel for their consultation we set up a virtual consultation and will talk to you more about “potential travel accommodations.”</p>
                 </div>
             </div>
-            <!-- Group 5: Medical -->
             <div class="group-container group-medical">
                 <div class="group-header">Medical</div>
                 <div class="question-box" onclick="toggleAnswer('answer16')">Does Nuvia take dental insurance? (Insurance Script)</div>
@@ -633,7 +554,6 @@
                     <p>“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)</p>
                 </div>
             </div>
-            <!-- Group 6: General Rules -->
             <div class="group-container group-general">
                 <div class="group-header">General Rules</div>
                 <div class="question-box" onclick="toggleAnswer('answer26')">Red Flags</div>
@@ -761,7 +681,6 @@
             });
         }
 
-        // Digital date and time
         function updateDateTime() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -772,7 +691,6 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Recording functionality
         let mediaRecorder;
         let recordedChunks = [];
         let audioContext;
