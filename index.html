@@ -1,3 +1,5 @@
+
+Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,9 +131,44 @@
             margin-bottom: 10px;
         }
 
-        .counter-container, .record-container, .call-notes-container {
+        .group-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 48%; /* Adjusted width for two columns */
+        }
+
+        .questions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             width: 100%;
-            margin-bottom: 10px;
+        }
+
+        .group-header {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .group-deposit .group-header { color: #f70000; }
+        .group-callback .group-header { color: #66b2ff; }
+        .group-cost .group-header { color: #ffcc66; }
+        .group-location .group-header { color: #66ff66; }
+        .group-medical .group-header { color: #00008B; }
+        .group-general .group-header { color: #00cdac; }
+
+        .record-container, .call-notes-container {
+            width: 48%;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
         }
 
         .counter {
@@ -142,11 +179,12 @@
             padding: 10px;
             text-align: center;
             margin-bottom: 10px;
+            width: 48%;
         }
 
         .counter-button {
             background-color: #1e1e1e;
-            color: #e0e0e0;
+            color: #000000; /* Changed to black */
             border: 1px solid #444;
             padding: 5px 10px;
             margin: 2px;
@@ -201,7 +239,7 @@
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
-            color: #e0e0e0;
+            color: #000000; /* Changed to black */
             transition: background-color 0.3s, transform 0.3s;
         }
 
@@ -241,36 +279,6 @@
             background-color: #006ed2;
         }
 
-        .group-container {
-            display: flex;
-            flex-direction: column;
-            margin: 0 10px;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .questions-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .group-header {
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .group-deposit .group-header { color: #f70000; }
-        .group-callback .group-header { color: #66b2ff; }
-        .group-cost .group-header { color: #ffcc66; }
-        .group-location .group-header { color: #66ff66; }
-        .group-medical .group-header { color: #00008B; }
-        .group-general .group-header { color: #00cdac; }
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -301,6 +309,17 @@
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
             <h1>Nuvia ISR Command Center</h1>
+        </div>
+        <div class="record-container">
+            <button class="record-button" id="start-recording">Start Recording</button>
+            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
+            <button class="record-button" id="save-recording" disabled>Save Recording</button>
+            <button class="record-button" id="load-recording">Load Recording</button>
+            <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
+            <audio id="audio-playback" controls></audio>
+            <div id="volume-bar">
+                <div id="volume-level"></div>
+            </div>
         </div>
         <div class="call-notes-container">
             <label for="call-notes">Call Notes</label>
@@ -580,8 +599,8 @@
                     <p>“Where are you located? I am just making sure you’re not too far”</p>
                     <p>“I won’t charge the card it’s just a hold”</p>
                     <p>Do Not Do</p>
+                    <p>Do Not cover pricing over the phone in any manner. ( only exception is if Medicaid is mentioned and we can give the monthly cost range and that is all)<p>
                     <p>Do not waive deposits- 2 strike rule</p>
-                    <p>Do not give pricing over the phone at all... (Only exception if if on Medicaid can give a monthly price range.)</p>                  
                     <p>Do not set leads who don't have $89 but first use the appropriate rebuttal to ensure this is true and not just a smoke screen</p>
                     <p>Calls cannot exceed 15 minutes</p>
                     <p>Do not ask if prospects are looking for single implants</p>
@@ -596,17 +615,6 @@
                     <p>Materials - Zirconia Titanium ceramic etc</p>
                     <p>We don’t talk about clinical questions</p>
                 </div>
-            </div>
-        </div>
-        <div class="record-container">
-            <button class="record-button" id="start-recording">Start Recording</button>
-            <button class="record-button" id="stop-recording" disabled>Stop Recording</button>
-            <button class="record-button" id="save-recording" disabled>Save Recording</button>
-            <button class="record-button" id="load-recording">Load Recording</button>
-            <button class="record-button" id="clear-recording" disabled>Clear Recording</button>
-            <audio id="audio-playback" controls></audio>
-            <div id="volume-bar">
-                <div id="volume-level"></div>
             </div>
         </div>
     </div>
