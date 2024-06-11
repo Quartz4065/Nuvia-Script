@@ -7,13 +7,19 @@
     <style>
         /* Responsive Design */
         @media (max-width: 768px) {
-            .call-notes-container, .counter-container, .record-container {
+            .call-notes-container, .counter-container, .record-container, .script-container {
+                width: 100%;
+                margin-bottom: 10px;
+                position: static;
+            }
+            .toggle-button {
                 position: static;
                 width: 100%;
                 margin-bottom: 10px;
             }
             .questions-container {
                 flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -33,6 +39,7 @@
             margin: auto;
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
             position: relative;
             padding: 20px;
         }
