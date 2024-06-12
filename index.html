@@ -5,11 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISR Command Center</title>
     <style>
-        /* Base Styles */
+        :root {
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --heading-color: #f1f1f1;
+            --question-box-bg: #1e1e1e;
+            --question-box-color: #e0e0e0;
+            --active-question-box-bg: #006ed2;
+            --answer-bg: #0000FF;
+            --script-bg: #2c2c2c;
+            --accordion-bg: #2c2c2c;
+            --accordion-color: #e0e0e0;
+            --accordion-active-bg: #006ed2;
+            --panel-bg: #2c2c2c;
+            --counter-bg: #1e1e1e;
+            --counter-color: #e0e0e0;
+            --counter-border: #1e1e1e;
+            --counter-button-bg: #ffffff;
+            --counter-button-color: #000000;
+            --counter-button-active-bg: #2e7d32;
+            --toggle-button-bg: #1e1e1e;
+            --toggle-button-color: #e0e0e0;
+            --toggle-button-hover-bg: #2e7d32;
+            --call-notes-bg: #2c2c2c;
+            --call-notes-color: #e0e0e0;
+            --call-notes-button-bg: #ffffff;
+            --call-notes-button-color: #000000;
+            --call-notes-button-hover-bg: #2e7d32;
+            --group-header-color: #ffffff;
+            --group-deposit-color: #f70000;
+            --group-callback-color: #66b2ff;
+            --group-cost-color: #ffcc66;
+            --group-location-color: #66ff66;
+            --group-medical-color: #00008B;
+            --group-general-color: #00cdac;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-color, #121212);
-            color: var(--text-color, #e0e0e0);
+            background-color: var(--background-color);
+            color: var(--text-color);
             padding: 30px;
             margin: 0;
             box-sizing: border-box;
@@ -37,14 +72,14 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            color: var(--heading-color, #f1f1f1);
+            color: var(--heading-color);
             margin-bottom: 10px;
             padding-bottom: 5px;
             border-bottom: 2px solid #444;
         }
 
         p, li, label, button {
-            color: var(--text-color, #c7c7c7);
+            color: var(--text-color);
         }
 
         .question-box {
@@ -54,8 +89,8 @@
             padding: 15px;
             margin: 5px;
             cursor: pointer;
-            background-color: var(--question-box-bg, #1e1e1e);
-            color: var(--question-box-color, #e0e0e0);
+            background-color: var(--question-box-bg);
+            color: var(--question-box-color);
             font-weight: bold;
             text-align: center;
             display: inline-block;
@@ -65,14 +100,14 @@
         }
 
         .question-box.active {
-            background-color: var(--active-question-box-bg, #006ed2);
+            background-color: var(--active-question-box-bg);
         }
 
         .answer {
             font-weight: bold;
             text-align: center;
             display: none;
-            background-color: var(--answer-bg, #0000FF);
+            background-color: var(--answer-bg);
             border: 1px solid #444;
             padding: 10px;
             z-index: 1000;
@@ -89,7 +124,7 @@
 
         .script-container {
             width: 100%;
-            background-color: var(--script-bg, #2c2c2c);
+            background-color: var(--script-bg);
             padding: 20px;
             box-sizing: border-box;
             display: none;
@@ -101,8 +136,8 @@
         }
 
         .accordion {
-            background-color: var(--accordion-bg, #2c2c2c);
-            color: var(--accordion-color, #e0e0e0);
+            background-color: var(--accordion-bg);
+            color: var(--accordion-color);
             cursor: pointer;
             padding: 10px;
             width: 100%;
@@ -117,12 +152,12 @@
 
         .accordion:hover,
         .accordion.active {
-            background-color: var(--accordion-active-bg, #006ed2);
+            background-color: var(--accordion-active-bg);
         }
 
         .panel {
             padding: 0 18px;
-            background-color: var(--panel-bg, #2c2c2c);
+            background-color: var(--panel-bg);
             display: none;
             overflow: hidden;
             border-radius: 5px;
@@ -149,16 +184,16 @@
         .group-header {
             font-size: 1.2em;
             margin-bottom: 5px;
-            color: var(--group-header-color, #ffffff);
+            color: var(--group-header-color);
             font-weight: bold;
         }
 
-        .group-deposit .group-header { color: var(--group-deposit-color, #f70000); }
-        .group-callback .group-header { color: var(--group-callback-color, #66b2ff); }
-        .group-cost .group-header { color: var(--group-cost-color, #ffcc66); }
-        .group-location .group-header { color: var(--group-location-color, #66ff66); }
-        .group-medical .group-header { color: var(--group-medical-color, #00008B); }
-        .group-general .group-header { color: var(--group-general-color, #00cdac); }
+        .group-deposit .group-header { color: var(--group-deposit-color); }
+        .group-callback .group-header { color: var(--group-callback-color); }
+        .group-cost .group-header { color: var(--group-cost-color); }
+        .group-location .group-header { color: var(--group-location-color); }
+        .group-medical .group-header { color: var(--group-medical-color); }
+        .group-general .group-header { color: var(--group-general-color); }
 
         .record-container, .call-notes-container {
             width: 48%;
@@ -171,9 +206,9 @@
         }
 
         .counter {
-            background-color: var(--counter-bg, #1e1e1e);
-            color: var(--counter-color, #e0e0e0);
-            border: 2px var(--counter-border, #1e1e1e);
+            background-color: var(--counter-bg);
+            color: var(--counter-color);
+            border: 2px var(--counter-border);
             border-radius: 10px;
             padding: 10px;
             text-align: center;
@@ -182,8 +217,8 @@
         }
 
         .counter-button {
-            background-color: var(--counter-button-bg, #ffffff);
-            color: var(--counter-button-color, #000000);
+            background-color: var(--counter-button-bg);
+            color: var(--counter-button-color);
             border: 1px solid #000000;
             padding: 5px 10px;
             margin: 2px;
@@ -193,22 +228,22 @@
         }
 
         .counter-button:active {
-            background-color: var(--counter-button-active-bg, #2e7d32);
+            background-color: var(--counter-button-active-bg);
         }
 
         .toggle-button {
-            background-color: var(--toggle-button-bg, #1e1e1e);
+            background-color: var(--toggle-button-bg);
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            color: var(--toggle-button-color, #e0e0e0);
+            color: var(--toggle-button-color);
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .toggle-button:hover {
-            background-color: var(--toggle-button-hover-bg, #2e7d32);
+            background-color: var(--toggle-button-hover-bg);
             transform: scale(1.05);
         }
 
@@ -226,24 +261,24 @@
             resize: vertical;
             box-sizing: border-box;
             padding: 10px;
-            background-color: var(--call-notes-bg, #2c2c2c);
+            background-color: var(--call-notes-bg);
             border: 1px solid #444;
-            color: var(--call-notes-color, #e0e0e0);
+            color: var(--call-notes-color);
             font-family: Arial, sans-serif;
         }
 
         .call-notes-container button {
-            background-color: var(--call-notes-button-bg, #ffffff);
+            background-color: var(--call-notes-button-bg);
             border: 1px solid #000000;
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
-            color: var(--call-notes-button-color, #000000);
+            color: var(--call-notes-button-color);
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .call-notes-container button:hover {
-            background-color: var(--call-notes-button-hover-bg, #2e7d32);
+            background-color: var(--call-notes-button-hover-bg);
         }
 
         #volume-bar {
@@ -300,15 +335,81 @@
                 box-sizing: border-box;
             }
         }
+
+        .customization-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: grey;
+            color: black;
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .customization-panel label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        .customization-panel input {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .customization-panel button {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .customization-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: var(--toggle-button-bg);
+            color: var(--toggle-button-color);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            border: none;
+        }
     </style>
 </head>
 <body>
     <div id="datetime"></div>
+    <button class="customization-toggle" onclick="toggleCustomizationPanel()">Customize Colors</button>
+    <div class="customization-panel" id="customization-panel">
+        <h3>Customize Colors</h3>
+        <label for="background-color">Background:</label>
+        <input type="color" id="background-color" value="#121212">
+        <label for="text-color">Text:</label>
+        <input type="color" id="text-color" value="#e0e0e0">
+        <label for="heading-color">Heading:</label>
+        <input type="color" id="heading-color" value="#f1f1f1">
+        <label for="question-box-bg">Question Box:</label>
+        <input type="color" id="question-box-bg" value="#1e1e1e">
+        <label for="question-box-color">Question Text:</label>
+        <input type="color" id="question-box-color" value="#e0e0e0">
+        <label for="active-question-box-bg">Active Question Box:</label>
+        <input type="color" id="active-question-box-bg" value="#006ed2">
+        <label for="answer-bg">Answer Background:</label>
+        <input type="color" id="answer-bg" value="#0000FF">
+        <button onclick="applyCustomColors()">Apply</button>
+    </div>
     <div class="container">
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
             <h1>Nuvia ISR Command Center</h1>
         </div>
+
+        <!-- Your existing content -->
+
         <div class="record-container">
             <button class="record-button" id="start-recording" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Start Recording</button>
             <button class="record-button" id="stop-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Stop Recording</button>
@@ -806,6 +907,37 @@
                 });
             }
         });
+
+        function applyCustomColors() {
+            const root = document.documentElement;
+
+            const backgroundColor = document.getElementById('background-color').value;
+            const textColor = document.getElementById('text-color').value;
+            const headingColor = document.getElementById('heading-color').value;
+            const questionBoxBg = document.getElementById('question-box-bg').value;
+            const questionBoxColor = document.getElementById('question-box-color').value;
+            const activeQuestionBoxBg = document.getElementById('active-question-box-bg').value;
+            const answerBg = document.getElementById('answer-bg').value;
+            // Add more color inputs as needed
+
+            root.style.setProperty('--background-color', backgroundColor);
+            root.style.setProperty('--text-color', textColor);
+            root.style.setProperty('--heading-color', headingColor);
+            root.style.setProperty('--question-box-bg', questionBoxBg);
+            root.style.setProperty('--question-box-color', questionBoxColor);
+            root.style.setProperty('--active-question-box-bg', activeQuestionBoxBg);
+            root.style.setProperty('--answer-bg', answerBg);
+            // Update other properties similarly
+        }
+
+        function toggleCustomizationPanel() {
+            const panel = document.getElementById('customization-panel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
