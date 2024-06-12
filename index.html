@@ -83,11 +83,11 @@
         }
 
         .question-box {
-            border-radius: 15px;
+            border-radius: 10px;
             width: 100%;
             border: 1px solid #444;
-            padding: 15px;
-            margin: 5px;
+            padding: 7.5px; /* Reduced padding by 25% */
+            margin: 3px;
             cursor: pointer;
             background-color: var(--question-box-bg);
             color: var(--question-box-color);
@@ -97,6 +97,7 @@
             box-sizing: border-box;
             transform: scale(1.02);
             transition: background-color 0.3s, transform 0.3s;
+            font-size: 0.75em; /* Reduced font size by 25% */
         }
 
         .question-box.active {
@@ -146,7 +147,7 @@
             border: none;
             outline: none;
             transition: 0.3s;
-            font-size: 1.1em;
+            font-size: 0.9em; /* Reduced font size */
             margin-top: 10px;
             border-radius: 5px;
         }
@@ -157,12 +158,13 @@
         }
 
         .panel {
-            padding: 0 18px;
+            padding: 0 12px;
             background-color: var(--panel-bg);
             display: none;
             overflow: hidden;
             border-radius: 5px;
             margin-bottom: 10px;
+            font-size: 0.9em; /* Reduced font size */
         }
 
         .group-container {
@@ -183,7 +185,7 @@
         }
 
         .group-header {
-            font-size: 1.2em;
+            font-size: 1em; /* Reduced font size */
             margin-bottom: 5px;
             color: var(--group-header-color);
             font-weight: bold;
@@ -211,21 +213,23 @@
             color: var(--counter-color);
             border: 2px var(--counter-border);
             border-radius: 10px;
-            padding: 10px;
+            padding: 7px;
             text-align: center;
             margin-bottom: 10px;
             width: 48%;
+            font-size: 0.9em; /* Reduced font size */
         }
 
         .counter-button {
             background-color: var(--counter-button-bg);
             color: var(--counter-button-color);
             border: 1px solid #000000;
-            padding: 5px 10px;
+            padding: 3px 7px;
             margin: 2px;
             cursor: pointer;
             transform: scale(1.02);
             transition: background-color 0.3s, transform 0.3s;
+            font-size: 0.75em; /* Reduced font size */
         }
 
         .counter-button:active {
@@ -235,10 +239,10 @@
         .toggle-button {
             background-color: var(--toggle-button-bg);
             border: none;
-            padding: 10px 20px;
+            padding: 7px 15px;
             cursor: pointer;
             color: var(--toggle-button-color);
-            font-size: 16px;
+            font-size: 12px; /* Reduced font size */
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
         }
@@ -253,6 +257,7 @@
             margin-bottom: 5px;
             color: var(--call-notes-label-color, #c7c7c7);
             font-weight: bold;
+            font-size: 0.9em; /* Reduced font size */
         }
 
         .call-notes-container textarea {
@@ -261,21 +266,23 @@
             min-height: 100px;
             resize: vertical;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 7px;
             background-color: var(--call-notes-bg);
             border: 1px solid #444;
             color: var(--call-notes-color);
             font-family: Arial, sans-serif;
+            font-size: 0.9em; /* Reduced font size */
         }
 
         .call-notes-container button {
             background-color: var(--call-notes-button-bg);
             border: 1px solid #000000;
-            padding: 10px;
+            padding: 7px;
             cursor: pointer;
             margin-right: 5px;
             color: var(--call-notes-button-color);
             transition: background-color 0.3s, transform 0.3s;
+            font-size: 0.75em; /* Reduced font size */
         }
 
         .call-notes-container button:hover {
