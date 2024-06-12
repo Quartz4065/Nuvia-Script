@@ -8,8 +8,8 @@
         /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: var(--background-color, #121212);
+            color: var(--text-color, #e0e0e0);
             padding: 30px;
             margin: 0;
             box-sizing: border-box;
@@ -37,14 +37,14 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            color: #f1f1f1;
+            color: var(--heading-color, #f1f1f1);
             margin-bottom: 10px;
             padding-bottom: 5px;
             border-bottom: 2px solid #444;
         }
 
         p, li, label, button {
-            color: #c7c7c7;
+            color: var(--text-color, #c7c7c7);
         }
 
         .question-box {
@@ -54,8 +54,8 @@
             padding: 15px;
             margin: 5px;
             cursor: pointer;
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+            background-color: var(--question-box-bg, #1e1e1e);
+            color: var(--question-box-color, #e0e0e0);
             font-weight: bold;
             text-align: center;
             display: inline-block;
@@ -65,14 +65,14 @@
         }
 
         .question-box.active {
-            background-color: #006ed2;
+            background-color: var(--active-question-box-bg, #006ed2);
         }
 
         .answer {
             font-weight: bold;
             text-align: center;
             display: none;
-            background-color: #0000FF;
+            background-color: var(--answer-bg, #0000FF);
             border: 1px solid #444;
             padding: 10px;
             z-index: 1000;
@@ -89,7 +89,7 @@
 
         .script-container {
             width: 100%;
-            background-color: #2c2c2c;
+            background-color: var(--script-bg, #2c2c2c);
             padding: 20px;
             box-sizing: border-box;
             display: none;
@@ -101,8 +101,8 @@
         }
 
         .accordion {
-            background-color: #2c2c2c;
-            color: #e0e0e0;
+            background-color: var(--accordion-bg, #2c2c2c);
+            color: var(--accordion-color, #e0e0e0);
             cursor: pointer;
             padding: 10px;
             width: 100%;
@@ -117,12 +117,12 @@
 
         .accordion:hover,
         .accordion.active {
-            background-color: #006ed2;
+            background-color: var(--accordion-active-bg, #006ed2);
         }
 
         .panel {
             padding: 0 18px;
-            background-color: #2c2c2c;
+            background-color: var(--panel-bg, #2c2c2c);
             display: none;
             overflow: hidden;
             border-radius: 5px;
@@ -135,7 +135,7 @@
             margin: 0 10px;
             padding: 10px;
             border-radius: 5px;
-            width: 48%;
+            width: 31%; /* Changed from 48% to 31% for 3 columns */
             box-sizing: border-box;
         }
 
@@ -149,16 +149,16 @@
         .group-header {
             font-size: 1.2em;
             margin-bottom: 5px;
-            color: #ffffff;
+            color: var(--group-header-color, #ffffff);
             font-weight: bold;
         }
 
-        .group-deposit .group-header { color: #f70000; }
-        .group-callback .group-header { color: #66b2ff; }
-        .group-cost .group-header { color: #ffcc66; }
-        .group-location .group-header { color: #66ff66; }
-        .group-medical .group-header { color: #00008B; }
-        .group-general .group-header { color: #00cdac; }
+        .group-deposit .group-header { color: var(--group-deposit-color, #f70000); }
+        .group-callback .group-header { color: var(--group-callback-color, #66b2ff); }
+        .group-cost .group-header { color: var(--group-cost-color, #ffcc66); }
+        .group-location .group-header { color: var(--group-location-color, #66ff66); }
+        .group-medical .group-header { color: var(--group-medical-color, #00008B); }
+        .group-general .group-header { color: var(--group-general-color, #00cdac); }
 
         .record-container, .call-notes-container {
             width: 48%;
@@ -171,9 +171,9 @@
         }
 
         .counter {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-            border: 2px #1e1e1e;
+            background-color: var(--counter-bg, #1e1e1e);
+            color: var(--counter-color, #e0e0e0);
+            border: 2px var(--counter-border, #1e1e1e);
             border-radius: 10px;
             padding: 10px;
             text-align: center;
@@ -182,8 +182,8 @@
         }
 
         .counter-button {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--counter-button-bg, #ffffff);
+            color: var(--counter-button-color, #000000);
             border: 1px solid #000000;
             padding: 5px 10px;
             margin: 2px;
@@ -193,29 +193,29 @@
         }
 
         .counter-button:active {
-            background-color: #2e7d32;
+            background-color: var(--counter-button-active-bg, #2e7d32);
         }
 
         .toggle-button {
-            background-color: #1e1e1e;
+            background-color: var(--toggle-button-bg, #1e1e1e);
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            color: #e0e0e0;
+            color: var(--toggle-button-color, #e0e0e0);
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .toggle-button:hover {
-            background-color: #2e7d32;
+            background-color: var(--toggle-button-hover-bg, #2e7d32);
             transform: scale(1.05);
         }
 
         .call-notes-container label {
             display: block;
             margin-bottom: 5px;
-            color: #c7c7c7;
+            color: var(--call-notes-label-color, #c7c7c7);
             font-weight: bold;
         }
 
@@ -226,24 +226,24 @@
             resize: vertical;
             box-sizing: border-box;
             padding: 10px;
-            background-color: #2c2c2c;
+            background-color: var(--call-notes-bg, #2c2c2c);
             border: 1px solid #444;
-            color: #e0e0e0;
+            color: var(--call-notes-color, #e0e0e0);
             font-family: Arial, sans-serif;
         }
 
         .call-notes-container button {
-            background-color: #ffffff;
+            background-color: var(--call-notes-button-bg, #ffffff);
             border: 1px solid #000000;
             padding: 10px;
             cursor: pointer;
             margin-right: 5px;
-            color: #000000;
+            color: var(--call-notes-button-color, #000000);
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .call-notes-container button:hover {
-            background-color: #2e7d32;
+            background-color: var(--call-notes-button-hover-bg, #2e7d32);
         }
 
         #volume-bar {
@@ -275,7 +275,7 @@
 
         .question-box:hover {
             transform: scale(1.05);
-            background-color: #006ed2;
+            background-color: var(--question-box-hover-bg, #006ed2);
         }
 
         @media (max-width: 768px) {
